@@ -1,29 +1,15 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #f8f6f2;
   --card: #ffffff;
   --foreground: #18181b;
-  --black:#000000
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --black: #000000;
 }
 
 body {
-  /* background: var(--background); */
   color: var(--foreground);
-  font-family: var(--font-geist-sans), "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-poppins-sans), "Helvetica Neue", Arial, sans-serif;
 }
-
-/* body.page-designs {
-  background-color: #050505;
-  background-image: url("/images/design-bg.png");
-  background-repeat: no-repeat;
-  background-position: top right;
-  background-size: 60% auto;
-} */
