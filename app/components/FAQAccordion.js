@@ -1,0 +1,94 @@
+"use client";
+
+import { useState } from "react";
+
+const faqs = [
+  {
+    question: "What is a UX Audit and why do I need one?",
+    answer:
+      "A UX Audit is a detailed evaluation of your website or app to uncover usability issues, design inconsistencies, and conversion barriers. It helps you understand what's confusing users and what's stopping them from taking action, so you can improve engagement and ROI.",
+  },
+  {
+    question: "What do you check during a UX Audit?",
+    answer:
+      "We examine navigation, content clarity, accessibility, performance, forms, and conversion paths to highlight friction and opportunities.",
+  },
+  {
+    question: "How long does a UX Audit take?",
+    answer: "Most audits take 10-14 days depending on complexity and scope.",
+  },
+  {
+    question: "Will I get actionable recommendations?",
+    answer:
+      "Yes. You'll receive prioritized, ready-to-implement tasks with examples, references, and acceptance criteria.",
+  },
+  {
+    question: "Do you also audit mobile apps?",
+    answer:
+      "Absolutely. Every audit includes responsive checks to ensure great experiences on mobile, tablet, and desktop.",
+  },
+  {
+    question: "Can you fix the issues after the audit?",
+    answer:
+      "We can collaborate with your team or lead implementation sprints to ship improvements quickly.",
+  },
+];
+
+export default function FAQAccordion() {
+  const [openIndex, setOpenIndex] = useState(0);
+
+  const toggle = (index) => {
+    setOpenIndex((prev) => (prev === index ? null : index));
+  };
+
+  return (
+    <section
+      id="faq"
+      className="bg-white px-6 py-24"
+    >
+      <div className="mx-auto w-full max-w-[1200px]">
+        <div className="mx-auto max-w-[900px] text-center">
+          <h2 className="text-[38px] font-bold tracking-tight text-black sm:text-[40px]">
+            No dumb questions
+          </h2>
+        </div>
+
+        <div className="mx-auto mt-14 max-w-[900px] divide-y divide-[#e5e5e5]">
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <div key={faq.question} className="py-4">
+                <button
+                  className="flex w-full items-center justify-between py-4 text-left"
+                  onClick={() => toggle(index)}
+                  aria-expanded={isOpen}
+                >
+                  <span className="text-[18px] font-semibold text-[#111111]">
+                    {faq.question}
+                  </span>
+                  <span
+                    className={`text-[18px] text-black transition-transform duration-200 ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
+                    aria-hidden
+                  >
+                    v
+                  </span>
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-200 ${
+                    isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <p className="mt-2 w-[80%] text-[15px] leading-[1.65] text-[#6b6b6b]">
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}

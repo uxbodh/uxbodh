@@ -1,0 +1,7 @@
+<svg width="140" height="140" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="140" height="140" rx="18" fill="white" stroke="#E5DDD2"/>
+  <text x="26" y="52" fill="#111827" font-size="14" font-family="Arial" font-weight="700">UI audit</text>
+  <text x="26" y="72" fill="#4B5563" font-size="12" font-family="Arial">Hero clarity</text>
+  <text x="26" y="88" fill="#4B5563" font-size="12" font-family="Arial">CTA contrast</text>
+  <text x="26" y="104" fill="#4B5563" font-size="12" font-family="Arial">Nav focus</text>
+</svg>
