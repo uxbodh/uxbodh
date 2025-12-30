@@ -1,34 +1,100 @@
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 export default function Hero({ onOpenCTA }) {
+  const sectionRef = useRef(null);
+  const [showTitle, setShowTitle] = useState(false);
+  const [showBody, setShowBody] = useState(false);
+  const [showVisual, setShowVisual] = useState(false);
+  const [showButton, setShowButton] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const hasAnimatedRef = useRef(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimatedRef.current) {
+            setShowTitle(true);
+            setShowBody(true);
+            setShowVisual(true);
+            setShowButton(true);
+            hasAnimatedRef.current = true;
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isModalOpen]);
+
   return (
-    <section id="hero" className="bg-white px-6 pb-0 pt-16 lg:px-8">
+    <section ref={sectionRef} id="hero" className="bg-white px-6 pb-0 pt-16 lg:px-8">
       <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center text-center">
-        <h1 className="text-4xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl">
+        <h1
+          className={`text-6xl font-semibold leading-tight tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl transition-all duration-700 ease-out ${
+            showTitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
+        >
           Get essential
           <br />
           customer insights
         </h1>
-        <p className="mt-4 max-w-2xl text-base text-neutral-600 sm:text-lg">
+        <p
+          className={`mt-4 max-w-2xl text-base text-neutral-600 sm:text-lg transition-all duration-700 ease-out delay-100 ${
+            showBody ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
+        >
           Get expert UI/UX analysis that reveals hidden issues and unlocks your
           website&apos;s full potential
         </p>
-        <button
-          type="button"
-          onClick={() => onOpenCTA?.()}
-          className="mt-8 inline-flex h-12 w-[280px] items-center justify-center rounded-[10px] bg-[#F5426C] px-7 text-[16px] font-semibold text-white shadow-md transition hover:bg-[#e33b64]"
+        <div
+          className={`mt-8 flex flex-col items-center gap-3 sm:flex-row sm:gap-4 transition-all duration-700 ease-out delay-200 ${
+            showButton ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
         >
-          Get Started Today
-        </button>
+          <button
+            type="button"
+            onClick={() => onOpenCTA?.()}
+            className="inline-flex h-12 w-[280px] items-center justify-center rounded-[10px] bg-[#F5426C] px-7 text-[16px] font-semibold text-white shadow-md transition hover:bg-[#e33b64]"
+          >
+            Get Started Today
+          </button>
+          <button
+            type="button"
+            onClick={() => setIsModalOpen(true)}
+            className="inline-flex h-12 w-[220px] items-center justify-center rounded-[10px] border border-neutral-200 bg-white px-6 text-[15px] font-semibold text-neutral-900 shadow-sm transition hover:border-neutral-300 hover:bg-neutral-50"
+          >
+            View UI Preview
+          </button>
+        </div>
 
-        <div className="relative mt-14 w-full max-w-[1200px]">
+        <div className="relative w-full max-w-[1200px]">
           <div className="relative flex items-center justify-center">
             <Image
               src="/images/hero-image-left.png"
               alt="Left sticky note"
               width={200}
               height={180}
-              className="absolute -left-4 top-10 hidden -rotate-6 sm:block md:-left-10"
+              className={`absolute left-12 top-16 hidden z-10 -rotate-6 sm:block transition-all duration-800 ease-out ${
+                showVisual ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"
+              }`}
               priority
             />
             <Image
@@ -36,7 +102,9 @@ export default function Hero({ onOpenCTA }) {
               alt="Keyboard with hands"
               width={720}
               height={360}
-              className="h-auto w-full max-w-3xl "
+              className={`h-auto w-full max-w-3xl transition-all duration-800 ease-out ${
+                showVisual ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
               priority
             />
             <Image
@@ -44,12 +112,16 @@ export default function Hero({ onOpenCTA }) {
               alt="Right sticky note"
               width={200}
               height={180}
-              className="absolute -right-4 top-10 hidden rotate-6 sm:block md:-right-10"
+              className={`absolute -right-0 top-16 hidden z-10 rotate-6 sm:block transition-all duration-800 ease-out ${
+                showVisual ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6"
+              }`}
               priority
             />
           </div>
         </div>
       </div>
+
+      
     </section>
   );
 }

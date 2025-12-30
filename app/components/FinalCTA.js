@@ -49,13 +49,13 @@ export default function FinalCTA({ open, onOpenCTA, onCloseCTA, resetSignal }) {
       </div>
 
       {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4 py-6 backdrop-blur-sm">
-          <div className="relative flex w-full max-w-[1120px] min-h-[640px] overflow-hidden rounded-[30px] bg-white shadow-[0_36px_120px_-60px_rgba(0,0,0,0.55)] ring-1 ring-neutral-200/70">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-3 py-4 sm:px-4 sm:py-6 backdrop-blur-sm">
+          <div className="relative flex h-full w-full max-w-[1120px] flex-col overflow-hidden rounded-2xl bg-white shadow-[0_36px_120px_-60px_rgba(0,0,0,0.55)] ring-1 ring-neutral-200/70 sm:h-auto sm:flex-row sm:rounded-[30px]">
             <button
               type="button"
               onClick={() => onCloseCTA?.()}
               aria-label="Close form"
-              className="absolute right-5 top-5 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white text-neutral-800 shadow-[0_16px_50px_-28px_rgba(0,0,0,0.35)] ring-1 ring-neutral-200 transition hover:bg-neutral-50"
+              className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-white text-neutral-800 shadow-[0_16px_50px_-28px_rgba(0,0,0,0.35)] ring-1 ring-neutral-200 transition hover:bg-neutral-50 sm:right-5 sm:top-5"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -108,7 +108,7 @@ export default function FinalCTA({ open, onOpenCTA, onCloseCTA, resetSignal }) {
               </div>
             </div>
 
-            <div className="flex flex-1 flex-col justify-center px-5 py-7 sm:px-12 sm:py-12">
+            <div className="flex flex-1 flex-col justify-center px-4 py-6 sm:px-12 sm:py-12 overflow-y-auto">
               <ContactForm onSuccess={onCloseCTA} resetSignal={resetSignal} />
             </div>
           </div>

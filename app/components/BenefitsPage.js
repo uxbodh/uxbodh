@@ -50,14 +50,31 @@ export default function BenefitsPage() {
 
 function Heading() {
   return (
-    <div className="space-y-3">
-      <h2 className="text-[30px] font-semibold leading-tight text-neutral-900 sm:text-[32px]">
+    <div className="space-y-2">
+      <h2
+        className="font-normal text-neutral-900 text-center"
+        style={{
+          fontSize: "60px",
+          lineHeight: "80px",
+        }}
+      >
         We will make your online
         <br />
-        presence <span className="text-[#e64169]">STRONG</span>
+        presence{" "}
+        <span className="font-bold" style={{ color: "#e64169" }}>
+          STRONG
+        </span>
       </h2>
-      <p className="text-sm font-medium leading-relaxed text-neutral-500 sm:text-base">
-        Get expert UI/UX analysis that reveals hidden issues and unlocks your website’s full potential
+
+      <p
+        className="mt-2 text-neutral-500 text-center"
+        style={{
+          fontSize: "16px",
+          lineHeight: "26px",
+        }}
+      >
+        Get expert UI/UX analysis that reveals hidden issues and unlocks your
+        website’s full potential
       </p>
     </div>
   );
@@ -67,7 +84,7 @@ function ImageBlock() {
   return (
     <div className="mt-10 flex justify-center">
       <div className="relative flex w-full max-w-[420px] items-center justify-center overflow-hidden rounded-[14px] bg-white shadow-[0_20px_80px_-50px_rgba(0,0,0,0.35)] ring-1 ring-neutral-200/60">
-        <div className="flex w-full items-center justify-between px-10 py-6 gap-6">
+        <div className="flex w-full items-center justify-between gap-6 px-10 py-8">
           <div className="relative h-28 w-28">
             <Image
               src="/images/hero-image-left.png"
@@ -92,29 +109,53 @@ function ImageBlock() {
 
 function FeatureList() {
   return (
-    <div className="mt-10 space-y-10 text-left">
+    <div className="mt-16 space-y-12 text-left">
       {features.map((feature) => (
         <div key={feature.title} className="space-y-2">
-          <h3 className="text-lg font-semibold text-neutral-900 sm:text-xl">{feature.title}</h3>
-          <p className="text-sm leading-relaxed text-neutral-700 sm:text-base">{feature.body}</p>
+          <h3
+            className="font-semibold text-neutral-900"
+            style={{
+              fontSize: "40px",
+              lineHeight: "60px",
+            }}
+          >
+            {feature.title}
+          </h3>
+
+          <p
+            className="text-neutral-700 font-normal"
+            style={{
+              fontSize: "16px",
+              lineHeight: "30px",
+            }}
+          >
+            {feature.body}
+          </p>
         </div>
       ))}
     </div>
   );
 }
 
+
 function BottomCta() {
   return (
-    <div className="mt-14 rounded-[16px] bg-[#f7f2ee] px-6 py-8 text-center sm:px-10 sm:py-10">
-      <p className="text-lg font-semibold text-[#e64169]">Relax.</p>
-      <h4 className="mt-1 text-2xl font-semibold text-neutral-900 sm:text-[26px]">Your growth starts here</h4>
-      <p className="mt-2 text-sm text-neutral-600 sm:text-base">Smart strategies. Real impact. Sustainable success.</p>
+    <div className="mt-14 rounded-[16px] bg-[#f7f2ee] px-6 py-8 text-center sm:px-8 sm:py-9">
+      <p className="text-[18px] font-semibold text-[#e64169]">
+        Relax.
+      </p>
+      <h4 className="mt-1 text-[20px] sm:text-[22px] font-semibold text-neutral-900">
+        Your growth starts here
+      </h4>
+      <p className="mt-2 text-[14px] sm:text-[15px] text-neutral-600">
+        Smart strategies. Real impact. Sustainable success.
+      </p>
       <div className="mt-5 flex justify-center">
         <a
           href="#cta"
-          className="inline-flex items-center justify-center rounded-[10px] bg-[#e64169] px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_46px_-22px_rgba(230,65,105,0.85)] transition hover:bg-[#d83b61]"
+          className="inline-flex items-center justify-center rounded-[10px] bg-[#e64169] px-6 py-3 text-[13px] sm:text-[14px] font-semibold text-white shadow-[0_18px_46px_-22px_rgba(230,65,105,0.85)] transition hover:bg-[#d83b61]"
         >
-          Get Started Today
+          Get started today
         </a>
       </div>
     </div>

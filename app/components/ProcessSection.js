@@ -37,9 +37,9 @@ const steps = [
 export default function ProcessSection() {
   const [activeIndex, setActiveIndex] = useState(1);
 
-  const scrollUp = () => setActiveIndex((prev) => Math.max(0, prev - 1));
-  const scrollDown = () =>
-    setActiveIndex((prev) => Math.min(steps.length - 1, prev + 1));
+  const toggleStep = (idx) => {
+    setActiveIndex((prev) => (prev === idx ? null : idx));
+  };
 
   return (
     <section id="process" className="bg-white py-24 px-6 lg:px-8">
@@ -66,68 +66,84 @@ export default function ProcessSection() {
               />
             </div>
 
+            {/* Accordion */}
             <div className="relative">
               <div className="space-y-0">
                 {steps.map((step, idx) => {
                   const isActive = idx === activeIndex;
+
                   return (
-                    <div key={step.title} className="py-4">
-                      <div className="flex items-start justify-between gap-4">
+                    <div key={step.title} className="py-2">
+                      <button
+                        type="button"
+                        onClick={() => toggleStep(idx)}
+                        className="flex w-full items-start justify-between gap-4 text-left"
+                      >
                         <div className="flex items-start gap-4">
-                          <p className="text-lg font-medium text-gray-600">
+                          <p className="text-lg font-medium text-gray-600" 
+                           style={{
+                                color: isActive ? "#f74d7b" : "#000000",
+                              }}
+                          >
                             {step.number}
                           </p>
+
                           <div>
                             <h3
-                              className={`text-black ${isActive
-                                  ? "text-3xl font-bold tracking-tight"
-                                  : "text-xl font-medium"
-                                }`}
+                              className={`transition-all ${
+                                isActive
+                                  ? "text-2xl sm:text-3xl font-bold tracking-tight"
+                                  : "text-xl font-medium text-black"
+                              }`}
+                              style={{
+                                color: isActive ? "#f74d7b" : "#000000",
+                              }}
                             >
                               {step.title}
                             </h3>
-                            {isActive && (
-                              <div className="mt-3 space-y-3 text-base text-gray-600 leading-relaxed transition-all">
-                                <p>{step.content}</p>
-                                {step.checklist.length > 0 && (
-                                  <div className="space-y-2">
-                                    {step.checklist.map((item) => (
-                                      <div
-                                        key={item}
-                                        className="flex items-center gap-2 text-base font-medium text-gray-800"
-                                      >
-                                        <CheckIcon />
-                                        {item}
-                                      </div>
-                                    ))}
-                                  </div>
-                                )}
-                              </div>
-                            )}
                           </div>
                         </div>
-                      </div>
+
+                        {/* arrow circle */}
+                        <span
+                          className={`mt-1 flex h-7 w-7 items-center justify-center rounded-full border transition-transform ${
+                            isActive
+                              ? "rotate-180 text-white border-transparent"
+                              : "text-gray-700 border-gray-200"
+                          }`}
+                          style={{
+                            backgroundColor: isActive ? "#f74d7b" : "#ffffff",
+                          }}
+                          aria-hidden="true"
+                        >
+                          <ChevronDown isActive={isActive} />
+                        </span>
+                      </button>
+
+                      {isActive && (
+                        <div className="mt-3 pl-[3.2rem] space-y-3 text-base text-gray-600 leading-relaxed">
+                          <p>{step.content}</p>
+
+                          {step.checklist.length > 0 && (
+                            <div className="space-y-2">
+                              {step.checklist.map((item) => (
+                                <div
+                                  key={item}
+                                  className="flex items-center gap-2 text-base font-medium text-gray-800"
+                                >
+                                  <CheckIcon />
+                                  {item}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      )}
+
                       <div className="mt-4 h-px bg-gray-200/60" />
                     </div>
                   );
                 })}
-              </div>
-
-              <div className="absolute -right-8 top-1/2 flex -translate-y-1/2 flex-col gap-8">
-                <button
-                  onClick={scrollUp}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-800 shadow-md shadow-black/10 ring-1 ring-neutral-200 transition hover:bg-gray-100"
-                  aria-label="Previous step"
-                >
-                  <ChevronUp />
-                </button>
-                <button
-                  onClick={scrollDown}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-neutral-800 shadow-md shadow-black/10 ring-1 ring-neutral-200 transition hover:bg-gray-100"
-                  aria-label="Next step"
-                >
-                  <ChevronDown />
-                </button>
               </div>
             </div>
           </div>
@@ -156,33 +172,17 @@ function CheckIcon() {
   );
 }
 
-function ChevronUp() {
+function ChevronDown({ isActive }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      className="h-5 w-5"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="M5 15l7-7 7 7"
-      />
-    </svg>
-  );
-}
-
-function ChevronDown() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      className="h-5 w-5"
+      className="h-4 w-4"
+      style={{
+        color: isActive ? "#ffffff" : "#374151", // white when active
+      }}
     >
       <path
         strokeLinecap="round"
