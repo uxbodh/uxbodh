@@ -14,7 +14,7 @@ export default function DesignsRoute() {
       <DesignsHero />
 
       {/* Designs Grid Section */}
-      <section className="relative overflow-hidden bg-[#050505] text-white">
+      <section className="relative overflow-hidden  text-white bg-[#020406]">
         <div className="relative mx-auto w-full max-w-[1200px] px-6 pb-16 pt-12 sm:pb-20 sm:pt-16">
           
 
@@ -35,21 +35,20 @@ function DesignCard({ item, topSpace = false }) {
       href={`/designs/${item.id}`}
       className={`
     group block overflow-hidden rounded-[16px]
-    bg-[#0f0f10]
+    
     ring-1 ring-white/5
-    shadow-[0_20px_60px_-40px_rgba(0,0,0,0.8)]
     transition-all hover:-translate-y-1
-    ${topSpace ? "mt-8" : ""}  
+    ${topSpace ? "mt-20" : ""}  
   `}
     >
       {/* IMAGE WRAPPER */}
       <div
         className={`
-          relative w-full overflow-hidden bg-[#1a1a1c]
-          ${topSpace ? "pt-8 sm:pt-10" : ""}
+          relative w-full overflow-hidden bg-[#201E24]  p-3  rounded-[20px]
+          ${topSpace ? "mt-8 sm:mt-10" : ""}
         `}
       >
-        <div className="relative mx-auto aspect-[16/10] w-[92%] rounded-[14px] overflow-hidden">
+        <div className="relative mx-auto aspect-[540/389]  w-[100%] rounded-[20px] overflow-hidden">
           <Image
             src={item.image}
             alt={item.title}
@@ -62,11 +61,11 @@ function DesignCard({ item, topSpace = false }) {
 
       {/* CONTENT */}
       <div className="px-4 pb-4 pt-3">
-        <h3 className="text-lg font-semibold text-white sm:text-xl">
+        <h3 className="text-lg  text-white sm:text-2xl">
           {item.title}
         </h3>
 
-        <p className="mt-1 text-sm leading-relaxed text-neutral-400 sm:text-base">
+        <p className="mt-1 text-sm  text-neutral-400 sm:text-base leading-7">
           {item.description}
         </p>
       </div>
