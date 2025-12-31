@@ -21,7 +21,7 @@ export default function Home() {
           <AuditSection onOpenCTA={openCta} />
           <ProcessSection />
           <TestimonialsSlider />
-          <FAQAccordion />
+          {/* <FAQAccordion /> */}
         </>
       )}
     </PageShell>

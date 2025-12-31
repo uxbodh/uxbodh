@@ -4,18 +4,6 @@ import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 
-/**
- * FullPagePopupSlider Component
- * 
- * A full-screen modal with a carousel slider for displaying design images.
- * Features:
- * - Full-screen overlay with blur
- * - Centered white card with rounded corners
- * - Bottom navigation buttons (prev, close, next)
- * - Keyboard navigation (Esc, ArrowLeft, ArrowRight)
- * - Click outside to close
- * - Disables body scroll when open
- */
 export default function FullPagePopupSlider({
   isOpen,
   onClose,
@@ -75,15 +63,6 @@ export default function FullPagePopupSlider({
     setActiveIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   };
 
-  // Debug logging
-  useEffect(() => {
-    if (isOpen) {
-      console.log("Modal isOpen:", isOpen);
-      console.log("Slides count:", slides.length);
-      console.log("Active index:", activeIndex);
-    }
-  }, [isOpen, slides.length, activeIndex]);
-
   if (!isOpen) {
     return null;
   }
@@ -95,7 +74,7 @@ export default function FullPagePopupSlider({
   if (slides.length === 0) {
     const emptyContent = (
       <div
-        className="fixed inset-0 z-[100] flex items-center justify-center bg-black/30 backdrop-blur-sm"
+        className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm"
         onClick={onClose}
       >
         <div className="rounded-2xl bg-white p-8 text-center">
@@ -121,87 +100,25 @@ export default function FullPagePopupSlider({
 
   const modalContent = (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/30 backdrop-blur-sm"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm"
       onClick={onClose}
     >
       {/* Slider Card */}
       <div
-        className="relative mx-4 w-full max-w-4xl rounded-2xl bg-white shadow-2xl"
+        className="relative h-[94vh] w-[94vw] overflow-hidden rounded-[28px] bg-[#EEF2F8] shadow-2xl ring-1 ring-black/5 sm:h-[92vh] sm:w-[92vw]"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Slide Indicator (Top Right) */}
-        {slides.length > 1 && (
-          <div className="absolute right-4 top-4 z-10 rounded-full bg-black/60 px-3 py-1.5 text-xs font-medium text-white backdrop-blur-sm">
-            {activeIndex + 1} / {slides.length}
-          </div>
-        )}
-
-        {/* Image Container */}
-        <div className="relative aspect-video w-full overflow-hidden rounded-t-2xl bg-neutral-50 sm:aspect-[4/3]">
-          <Image
-            src={currentSlide.image}
-            alt={currentSlide.title || `Slide ${activeIndex + 1}`}
-            fill
-            className="object-contain"
-            sizes="(max-width: 768px) 100vw, 896px"
-            priority
-          />
-        </div>
-
-        {/* Slide Info (Optional) */}
-        {(currentSlide.title || currentSlide.description) && (
-          <div className="border-t border-neutral-200 px-6 py-4">
-            {currentSlide.title && (
-              <h3 className="text-lg font-semibold text-neutral-900">
-                {currentSlide.title}
-              </h3>
-            )}
-            {currentSlide.description && (
-              <p className="mt-1 text-sm text-neutral-600">
-                {currentSlide.description}
-              </p>
-            )}
-          </div>
-        )}
-      </div>
-
-      {/* Bottom Navigation Buttons */}
-      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 items-center gap-3">
-        {/* Previous Button */}
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            handlePrev();
-          }}
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white transition-all hover:scale-105 hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-white/50"
-          aria-label="Previous slide"
-        >
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-        </button>
-
         {/* Close Button */}
         <button
           onClick={(e) => {
             e.stopPropagation();
             onClose();
           }}
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white transition-all hover:scale-105 hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-white/50"
+          className="absolute right-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-neutral-300 bg-white text-neutral-900 transition hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-black/10"
           aria-label="Close modal"
         >
           <svg
-            className="h-6 w-6"
+            className="h-5 w-5"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -215,30 +132,65 @@ export default function FullPagePopupSlider({
           </svg>
         </button>
 
-        {/* Next Button */}
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            handleNext();
-          }}
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white transition-all hover:scale-105 hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-white/50"
-          aria-label="Next slide"
-        >
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button>
+        {/* Image Container */}
+        <div className="relative h-full w-full overflow-auto bg-white">
+          <Image
+            src={currentSlide.image}
+            alt={currentSlide.title || `Slide ${activeIndex + 1}`}
+            fill
+            className="object-contain"
+            sizes="100vw"
+            priority
+          />
+        </div>
       </div>
+
+      {/* Side Navigation Buttons */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          handlePrev();
+        }}
+        className="absolute left-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white text-neutral-900 shadow-lg transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/60 sm:left-6 sm:h-12 sm:w-12"
+        aria-label="Previous slide"
+      >
+        <svg
+          className="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+      </button>
+
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          handleNext();
+        }}
+        className="absolute right-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white text-neutral-900 shadow-lg transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/60 sm:right-6 sm:h-12 sm:w-12"
+        aria-label="Next slide"
+      >
+        <svg
+          className="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
+      </button>
     </div>
   );
 

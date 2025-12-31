@@ -125,7 +125,8 @@ export default function AuditSection({ onOpenCTA }) {
             Comprehensive website audits
           </h2>
           <p className="mt-4 text-base text-neutral-600 sm:text-lg">
-            We analyze every aspect of your website to uncover opportunities for improvement
+            We analyze every aspect of your website to uncover opportunities for
+            improvement
           </p>
         </div>
 
@@ -133,18 +134,28 @@ export default function AuditSection({ onOpenCTA }) {
           {audits.map((audit) => (
             <div
               key={audit.title}
-              className="relative flex h-full flex-col rounded-[18px] border border-neutral-300 bg-white px-7 py-8 text-left shadow-[0_8px_24px_-12px_rgba(0,0,0,0.2)]"
+              className="group relative flex h-full flex-col rounded-[18px] border border-neutral-300 bg-white px-7 py-8 text-left shadow-[0_8px_24px_-12px_rgba(0,0,0,0.2)] transition-all duration-300 ease-out hover:-translate-y-2 hover:border-[#f74d7b] hover:bg-[#fff7fb] hover:shadow-[0_22px_45px_-20px_rgba(0,0,0,0.45)]"
             >
+              {/* subtle glow frame */}
+              <div className="pointer-events-none absolute inset-0 -z-10 rounded-[24px] opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-100 bg-[radial-gradient(circle_at_top,_rgba(247,77,123,0.25),_transparent_60%)]" />
+
               <div className="mb-4 flex items-center gap-3 text-neutral-900">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-neutral-900 text-white">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-neutral-900 text-white transition-all duration-300 group-hover:bg-[#f74d7b] group-hover:shadow-[0_12px_30px_rgba(247,77,123,0.6)] group-hover:-translate-y-0.5 group-hover:scale-105">
                   {audit.icon}
                 </div>
-                <h3 className="text-lg font-semibold leading-tight">{audit.title}</h3>
+                <h3 className="text-lg font-semibold leading-tight">
+                  {audit.title}
+                </h3>
               </div>
+
               <p className="text-sm text-neutral-700">{audit.description}</p>
+
               <ul className="mt-5 space-y-3">
                 {audit.points.map((point) => (
-                  <li key={point} className="flex items-start gap-3 text-sm text-neutral-900">
+                  <li
+                    key={point}
+                    className="flex items-start gap-3 text-sm text-neutral-900"
+                  >
                     <span className="mt-0.5 inline-block">
                       <Check />
                     </span>
@@ -160,7 +171,7 @@ export default function AuditSection({ onOpenCTA }) {
           <button
             type="button"
             onClick={() => onOpenCTA?.()}
-            className="rounded-[10px] bg-[#f74d7b] px-8 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#e0416e]"
+            className="rounded-[10px] bg-[#f74d7b] px-8 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#e0416e] hover:shadow-[0_14px_30px_rgba(247,77,123,0.45)]"
           >
             Get started today
           </button>
