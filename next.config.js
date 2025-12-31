@@ -9,7 +9,7 @@ const nextConfig = {
   // --- Output Directory Configuration ---
   // By default, static exports go to an 'out' folder.
   // This line changes the name to 'build' to match your expectation.
-  distDir: 'out',
+  distDir: 'build',
 
   // --- Trailing Slash ---
   // Ensures all links in your generated HTML end with a '/', which is good practice
