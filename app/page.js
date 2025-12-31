@@ -8,7 +8,10 @@ import ProcessSection from "./components/ProcessSection";
 import TestimonialsSlider from "./components/TestimonialsSlider";
 import FAQAccordion from "./components/FAQAccordion";
 import BenefitsPage from "./components/BenefitsPage";
-import SamplesSection from "./components/SamplesSlider";
+// import SamplesSection from "./components/SamplesSlider";
+import dynamic from "next/dynamic";
+
+const SamplesSection = dynamic(() => import("./components/SamplesSlider"), { ssr: false });
 
 export default function Home() {
   return (

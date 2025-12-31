@@ -1,28 +1,21 @@
 /** @type {import('next').NextConfig} */
-
 const nextConfig = {
   // --- Static Export Configuration ---
-  // This is the most important setting. It tells Next.js to export the site
-  // as a collection of static HTML, CSS, and JS files, instead of a server application.
-  //output: 'export',
-
-  // --- Output Directory Configuration ---
-  // By default, static exports go to an 'out' folder.
-  // This line changes the name to 'build' to match your expectation.
-  distDir: 'build',
-
+  // Enables export to static HTML
+  output: 'export',
+  distDir: 'out',
   // --- Trailing Slash ---
-  // Ensures all links in your generated HTML end with a '/', which is good practice
-  // for static hosting servers to avoid routing issues.
-  //trailingSlash: true,
+  // Good for static hosting (avoids 404s)
+  trailingSlash: true,
 
   // --- Image Optimization ---
-  // For static exports, it's often best to disable the built-in image optimizer.
-  // Static hosts can't handle the on-demand image optimization Next.js does by default.
   images: {
-    unoptimized: true,
+    unoptimized: true, // disables on-demand image optimization
   },
+
+  // Optional: if you want a custom output folder for export
+  // The default for next export is 'out'
+  // You can specify like: "next export -o build"
 };
 
-// This line makes the configuration available to Next.js
 module.exports = nextConfig;
