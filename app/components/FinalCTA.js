@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import ContactForm from "./ContactForm";
+import RelaxHero from "./RelaxHero";
 
 const checklist = [
   "Find Hidden Usability Issues",
@@ -30,23 +31,13 @@ export default function FinalCTA({ open, onOpenCTA, onCloseCTA, resetSignal }) {
           width={443}
           height={325}
         />
-        <div className="mt-6 max-w-2xl">
-          <p className="text-xl font-semibold text-[#e0416e]">Relax.</p>
-          <h2 className="mt-1 text-3xl font-semibold text-neutral-900 sm:text-4xl">
-            Your growth starts here
-          </h2>
-          <p className="mt-3 text-neutral-600">
-            Fix messaging, UX, and friction. Scale with success.
-          </p>
-          <button
-            type="button"
-            onClick={() => onOpenCTA?.()}
-            className="mt-6 inline-flex items-center justify-center rounded-[10px] bg-[#f74d7b] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#e0416e]"
-          >
-            Get started today
-          </button>
-        </div>
+       
       </div>
+
+ <RelaxHero />
+
+
+
 
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-3 py-4 sm:px-4 sm:py-6 backdrop-blur-sm">

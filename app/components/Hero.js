@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import GetStartToday from "./GetStartedToday";
 
 export default function Hero({ onOpenCTA }) {
   const sectionRef = useRef(null);
@@ -48,7 +49,7 @@ export default function Hero({ onOpenCTA }) {
     <section ref={sectionRef} id="hero" className="bg-white px-6 pb-0 pt-16 lg:px-8">
       <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center text-center">
         <h1
-          className={`text-6xl font-semibold leading-tight tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl transition-all duration-700 ease-out ${
+          className={`text-6xl font-semibold  tracking-tight text-neutral-900  lg:text-6xl lg:leading-tight transition-all duration-700 ease-out ${
             showTitle ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
@@ -69,20 +70,8 @@ export default function Hero({ onOpenCTA }) {
             showButton ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          <button
-            type="button"
-            onClick={() => onOpenCTA?.()}
-            className="inline-flex h-12 w-[280px] items-center justify-center rounded-[10px] bg-[#F5426C] px-7 text-[16px] font-semibold text-white shadow-md transition hover:bg-[#e33b64]"
-          >
-            Get Started Today
-          </button>
-          <button
-            type="button"
-            onClick={() => setIsModalOpen(true)}
-            className="inline-flex h-12 w-[220px] items-center justify-center rounded-[10px] border border-neutral-200 bg-white px-6 text-[15px] font-semibold text-neutral-900 shadow-sm transition hover:border-neutral-300 hover:bg-neutral-50"
-          >
-            View UI Preview
-          </button>
+         <GetStartToday onClick={() => setIsModalOpen(true)} />
+         
         </div>
 
         <div className="relative w-full max-w-[1200px]">
@@ -112,7 +101,7 @@ export default function Hero({ onOpenCTA }) {
               alt="Right sticky note"
               width={200}
               height={180}
-              className={`absolute -right-0 top-16 hidden z-10 rotate-6 sm:block transition-all duration-800 ease-out ${
+              className={`absolute right-5 top-16 hidden z-10 rotate-6 sm:block transition-all duration-800 ease-out ${
                 showVisual ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6"
               }`}
               priority

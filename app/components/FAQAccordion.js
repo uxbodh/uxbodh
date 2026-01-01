@@ -46,7 +46,7 @@ export default function FAQAccordion() {
       id="faq"
       className="bg-white px-6 py-24"
     >
-      <div className="mx-auto w-full max-w-[1200px]">
+      <div className="mx-auto w-full max-w-[740px]">
         <div className="mx-auto max-w-[900px] text-center">
           <h2 className="text-[38px] font-bold tracking-tight text-black sm:text-[40px]">
             No dumb questions

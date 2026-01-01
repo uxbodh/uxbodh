@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import RelaxHero from "./RelaxHero";
 
 const features = [
   {
@@ -38,7 +39,7 @@ const features = [
 export default function BenefitsPage() {
   return (
     <section id="benefits" className="bg-white px-6 py-20">
-      <div className="mx-auto w-full max-w-[760px] text-center">
+      <div className="mx-auto w-full max-w-[780px] text-center">
         <Heading />
         <ImageBlock />
         <FeatureList />
@@ -50,9 +51,9 @@ export default function BenefitsPage() {
 
 function Heading() {
   return (
-    <div className="space-y-2">
+    <div className="space-y-2 mb-20">
       <h2
-        className="font-normal text-neutral-900 text-center"
+        className="font-semibold text-neutral-900 text-center"
         style={{
           fontSize: "60px",
           lineHeight: "80px",
@@ -69,7 +70,7 @@ function Heading() {
       <p
         className="mt-2 text-neutral-500 text-center"
         style={{
-          fontSize: "16px",
+          fontSize: "18px",
           lineHeight: "26px",
         }}
       >
@@ -83,24 +84,18 @@ function Heading() {
 function ImageBlock() {
   return (
     <div className="mt-10 flex justify-center">
-      <div className="relative flex w-full max-w-[420px] items-center justify-center overflow-hidden rounded-[14px] bg-white shadow-[0_20px_80px_-50px_rgba(0,0,0,0.35)] ring-1 ring-neutral-200/60">
-        <div className="flex w-full items-center justify-between gap-6 px-10 py-8">
-          <div className="relative h-28 w-28">
+      <div className="relative flex w-full">
+        <div className="flex w-full items-center justify-between gap-">
+         
             <Image
-              src="/images/hero-image-left.png"
+              src="/images/benefits.jpg"
               alt="Pixel T-Rex dinosaur"
-              fill
+              width={780}
+              height={450}
               className="object-contain"
             />
-          </div>
-          <div className="relative h-28 w-28">
-            <Image
-              src="/images/hero-image-right.png"
-              alt="Dinosaur head"
-              fill
-              className="object-contain"
-            />
-          </div>
+         
+        
         </div>
       </div>
     </div>
@@ -109,11 +104,11 @@ function ImageBlock() {
 
 function FeatureList() {
   return (
-    <div className="mt-16 space-y-12 text-left">
+    <div className="w-[660px] mx-auto  mt-16 space-y-8 text-left mb-32">
       {features.map((feature) => (
         <div key={feature.title} className="space-y-2">
           <h3
-            className="font-semibold text-neutral-900"
+            className="font-[500] text-black"
             style={{
               fontSize: "40px",
               lineHeight: "60px",
@@ -123,7 +118,7 @@ function FeatureList() {
           </h3>
 
           <p
-            className="text-neutral-700 font-normal"
+            className="text-black font-[400]"
             style={{
               fontSize: "16px",
               lineHeight: "30px",
@@ -140,24 +135,6 @@ function FeatureList() {
 
 function BottomCta() {
   return (
-    <div className="mt-14 rounded-[16px] bg-[#f7f2ee] px-6 py-8 text-center sm:px-8 sm:py-9">
-      <p className="text-[18px] font-semibold text-[#e64169]">
-        Relax.
-      </p>
-      <h4 className="mt-1 text-[20px] sm:text-[22px] font-semibold text-neutral-900">
-        Your growth starts here
-      </h4>
-      <p className="mt-2 text-[14px] sm:text-[15px] text-neutral-600">
-        Smart strategies. Real impact. Sustainable success.
-      </p>
-      <div className="mt-5 flex justify-center">
-        <a
-          href="#cta"
-          className="inline-flex items-center justify-center rounded-[10px] bg-[#e64169] px-6 py-3 text-[13px] sm:text-[14px] font-semibold text-white shadow-[0_18px_46px_-22px_rgba(230,65,105,0.85)] transition hover:bg-[#d83b61]"
-        >
-          Get started today
-        </a>
-      </div>
-    </div>
+   <RelaxHero  bgClass="bg-[#f9f5f5]" />
   );
 }

@@ -43,25 +43,25 @@ export default function TestimonialsSlider() {
 
   return (
     <section id="faq" className="bg-white px-6 py-24">
-      <div className="mx-auto w-full max-w-[1200px]">
+      <div className="mx-auto w-full max-w-[740px]">
         <div className="mx-auto max-w-[900px] text-center">
-          <h2 className="text-[38px] font-bold tracking-tight text-black sm:text-[40px]">
+          <h2 className="text-5xl font-bold tracking-tight text-black sm:text-[48px]">
             No dumb questions
           </h2>
         </div>
 
-        <div className="mx-auto mt-14 max-w-[900px] divide-y divide-[#e5e5e5]">
+        <div className="mx-auto mt-8 max-w-[900px] divide-y divide-[#e5e5e5]">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
 
             return (
-              <div key={faq.question} className="py-4">
+              <div key={faq.question} className="py-6">
                 <button
-                  className="flex w-full items-center justify-between py-4 text-left"
+                  className="flex w-full items-center justify-between py-2 text-left"
                   onClick={() => toggle(index)}
                   aria-expanded={isOpen}
                 >
-                  <span className="text-[18px] font-semibold text-[#111111]">
+                  <span className="text-xl font-semibold text-[#000000]">
                     {faq.question}
                   </span>
 
@@ -82,7 +82,7 @@ export default function TestimonialsSlider() {
                     isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <p className="mt-2 w-[80%] text-[15px] leading-[1.65] text-[#6b6b6b]">
+                  <p className="mt-2 w-[80%] text-[14px] leading-[1.65] text-[#000000] pb-2">
                     {faq.answer}
                   </p>
                 </div>
@@ -100,8 +100,8 @@ export default function TestimonialsSlider() {
 function ArrowDownIcon() {
   return (
     <svg
-      width="20"
-      height="20"
+      width="24"
+      height="24"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
