@@ -11,6 +11,7 @@ import BenefitsPage from "./components/BenefitsPage";
 // import SamplesSection from "./components/SamplesSlider";
 import dynamic from "next/dynamic";
 import RelaxHero from "./components/RelaxHero";
+import CTAFormModal from "./components/CtaformButton";
 
 const SamplesSection = dynamic(() => import("./components/SamplesSlider"), { ssr: false });
 
@@ -26,6 +27,7 @@ export default function Home() {
           <ProcessSection />
           <TestimonialsSlider />
           <FAQAccordion />
+          <CTAFormModal />
          
         </>
       )}
