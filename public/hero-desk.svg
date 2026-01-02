@@ -37,12 +37,12 @@
   <rect x="310" y="234" width="180" height="26" rx="12" fill="#F1EAE1" stroke="#E5DDD2"/>
   <rect x="342" y="238" width="52" height="18" rx="9" fill="white" stroke="#E2DBD0"/>
   <rect x="404" y="238" width="52" height="18" rx="9" fill="white" stroke="#E2DBD0"/>
-  <path d="M450 260c10 10 22 18 36 18s26-8 36-18" stroke="#E2DBD0" stroke-width="4" stroke-linecap="round"/>
+  <path d="M450 260c10 10 22 18 36 18s26-8 36-18" stroke="#E2DBD0" strokeWidth="4" strokeLinecap="round"/>
   <rect x="138" y="170" width="80" height="80" rx="20" fill="white" stroke="#E5DDD2"/>
-  <path d="M162 210l16-18 12 14" stroke="#2D9C5E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M180 188c-10 0-18 8-18 18" stroke="#2D9C5E" stroke-width="3" stroke-linecap="round"/>
+  <path d="M162 210l16-18 12 14" stroke="#2D9C5E" strokeWidth="4" strokeLinecap="round" stroke-linejoin="round"/>
+  <path d="M180 188c-10 0-18 8-18 18" stroke="#2D9C5E" strokeWidth="3" strokeLinecap="round"/>
   <rect x="682" y="170" width="80" height="80" rx="20" fill="white" stroke="#E5DDD2"/>
-  <path d="M706 200h36M706 214h28M706 228h20" stroke="#111827" stroke-width="3" stroke-linecap="round"/>
+  <path d="M706 200h36M706 214h28M706 228h20" stroke="#111827" strokeWidth="3" strokeLinecap="round"/>
   <rect x="728" y="186" width="14" height="10" rx="3" fill="#F74D7B"/>
   <rect x="400" y="262" width="110" height="24" rx="12" fill="#F74D7B"/>
   <rect x="180" y="120" width="540" height="14" rx="7" fill="#EDE7DE"/>

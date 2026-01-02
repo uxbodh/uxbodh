@@ -40,3 +40,33 @@ body {
   scrollbar-width: thin;             /* auto | thin | none */
   scrollbar-color: #bfbfbf #f1f1f1;   /* thumb | track */
 }
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 990;
+}
+.modal-content {
+  z-index: 991;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+.modal-title {
+  font-weight: bold;
+  font-size: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 16px 24px;
+}
+.modal-close {
+  z-index: 992;
+}
+.enquiry-form-modal .modal-content {
+  overflow: hidden;
+}
