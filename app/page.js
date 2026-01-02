@@ -17,15 +17,15 @@ const SamplesSection = dynamic(() => import("./components/SamplesSlider"), { ssr
 export default function Home() {
   return (
     <PageShell withCTA>
+
       {({ openCta }) => (
         <>
           <Hero onOpenCTA={openCta} />
-         
           <SamplesSection />
           <AuditSection onOpenCTA={openCta} />
           <ProcessSection />
           <TestimonialsSlider />
-          {/* <FAQAccordion /> */}
+          <FAQAccordion />
          
         </>
       )}
