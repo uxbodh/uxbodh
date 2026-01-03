@@ -28,12 +28,14 @@ export default function Home() {
         // </>
 
         <>
-            <Hero />
-            <SamplesSection />
-            <AuditSection />
-            <ProcessSection />
-            <TestimonialsSlider />
-            <FAQAccordion />
+            <PageShell withCTA>
+                <Hero />
+                <SamplesSection />
+                <AuditSection />
+                <ProcessSection />
+                <TestimonialsSlider />
+                <FAQAccordion />
+            </PageShell>
         </>
     );
 }
