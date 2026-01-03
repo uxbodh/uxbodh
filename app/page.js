@@ -17,27 +17,27 @@ const SamplesSection = dynamic(() => import("./components/SamplesSlider"), { ssr
 
 export default function Home() {
   return (
-    <>
-      <div style={{width: '100%', textAlign: 'center', marginTop: 300}}>
-        <h1>Welcome to UXbodh</h1>
-        <br />
-        <h6>Coming Soon...</h6>
-      </div>
-    </>
-    // <PageShell withCTA>
+    // <>
+    //   <div style={{width: '100%', textAlign: 'center', marginTop: 300}}>
+    //     <h1>Welcome to UXbodh</h1>
+    //     <br />
+    //     <h6>Coming Soon...</h6>
+    //   </div>
+    // </>
+    <PageShell withCTA>
 
-    //   {({ openCta }) => (
-    //     <>
-    //       <Hero onOpenCTA={openCta} />
-    //       <SamplesSection />
-    //       <AuditSection onOpenCTA={openCta} />
-    //       <ProcessSection />
-    //       <TestimonialsSlider />
-    //       <FAQAccordion />
-    //       {/* <CTAFormModal /> */}
+      {({ openCta }) => (
+        <>
+          <Hero onOpenCTA={openCta} />
+          <SamplesSection />
+          <AuditSection onOpenCTA={openCta} />
+          <ProcessSection />
+          <TestimonialsSlider />
+          <FAQAccordion />
+          {/* <CTAFormModal /> */}
          
-    //     </>
-    //   )}
-    // </PageShell>
+        </>
+      )}
+    </PageShell>
   );
 }
