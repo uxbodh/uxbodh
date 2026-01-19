@@ -6,31 +6,47 @@ import Image from "next/image";
 const steps = [
   {
     number: "01.",
-    title: "Deep analysis",
+    title: "Discovery",
     content:
-      "We dig into flows, structure, and heuristics to find opportunities and blockers.",
-    checklist: [],
+      "We understand your business goals, audience, and current challenges, and align the audit with what actually matters for your product, market, and success metrics.",
+    checklist: [
+      "Understand business model",
+      "Identify target audience",
+      "Review user flows",
+    ],
   },
   {
     number: "02.",
-    title: "Data analysis",
+    title: "Deep Analysis",
     content:
-      "Compliance check to ensure your website is accessible to all users, including those with disabilities. Compliance check to ensure your website is accessible to all users, including those with disabilities.",
-    checklist: ["Design System Review", "Visual Hierarchy", "Brand Alignment"],
+      "We analyse user journeys, conversion funnels, heatmaps, navigation flow, and interaction behaviour to uncover where users get confused, drop off, or feel friction.",
+    checklist: [
+      "Key Pages UX heuristic evaluation",
+      "Funnel report analysis",
+      "Information architecture review",
+    ],
   },
   {
     number: "03.",
-    title: "Detailed report",
+    title: "Data-driven insights",
     content:
-      "Clear, prioritized recommendations with visuals, examples, and supporting rationale.",
-    checklist: [],
+      "You receive clear findings with severity levels and impact on business metrics, backed by real user data rather than opinions or guesswork.",
+    checklist: [
+      "Prioritised list of issues",
+      "Severity levels and estimated business impact",
+      "Quick wins improvement recommendations",
+    ],
   },
   {
     number: "04.",
-    title: "Implementation",
+    title: "Implementation plan",
     content:
-      "We work alongside your team to ship the improvements and measure outcomes.",
-    checklist: [],
+      "We give actionable fixes your team or developer can implement immediately, along with priorities and quick wins so improvements start showing measurable results faster.",
+    checklist: [
+      "Step-by-step fixes recommendations",
+      "Design & UX best-practice guidelines",
+      "Developer-ready task list with priorities",
+    ],
   },
 ];
 
@@ -46,10 +62,11 @@ export default function ProcessSection() {
       <div className="mx-auto w-full max-w-[1200px]">
         <div className="mx-auto max-w-[1200px] text-center">
           <h2 className="text-5xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
-            Our process
+            UX audit process
           </h2>
-          <p className="mt-3 text-xl text-neutral-600">
-            A proven methodology to spot friction, fix it, and unlock growth.
+          <p className="mt-3 text-xl text-neutral-600 max-w-3xl mx-auto">
+            A proven, structured methodology ensures every recommendation is
+            practical, prioritised, and backed by real user behaviour.
           </p>
         </div>
 

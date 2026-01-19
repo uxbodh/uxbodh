@@ -5,14 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Benefits", href: "/benefits" },
-  { label: "Designs", href: "/designs" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-  { label: "Blog", href: "/blog" },
-];
+import { navLinks } from "../constants/navLinks";
 
 export default function Header({
   onOpenCTA,
@@ -26,6 +19,12 @@ export default function Header({
   const isDesignsPage = pathname === "/designs";
   const isDesignDetailPage = pathname?.startsWith("/designs/") && pathname !== "/designs";
   const needsScrollEffect = isDesignsPage || isDesignDetailPage;
+  const isActiveLink = (href) => {
+    if (href === "/designs") {
+      return pathname === "/designs" || pathname?.startsWith("/designs/");
+    }
+    return pathname === href;
+  };
 
   useEffect(() => {
     if (!needsScrollEffect) {
@@ -77,7 +76,7 @@ export default function Header({
           }`}
         >
           {navLinks.map((item) => {
-            const active = pathname === item.href;
+            const active = isActiveLink(item.href);
             return (
               <Link
                 key={item.label}
@@ -161,7 +160,7 @@ export default function Header({
                       ? "hover:bg-white/5"
                       : "text-neutral-800 hover:bg-neutral-50"
                   } ${
-                    pathname === item.href
+                    isActiveLink(item.href)
                       ? isPink || isTransparent
                         ? "text-white"
                         : "text-[#f74d7b]"
