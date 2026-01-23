@@ -23,11 +23,12 @@ export default function AuditSection() {
             <div className="mx-auto w-full max-w-[1085px]">
                 <div className="mx-auto max-w-4xl flex-row">
                     <h2 className="text-3xl font-semibold sm:text-4xl">
-                        Comprehensive website audits
+                        Comprehensive website/App audits
                     </h2>
                     <p className="mt-4 text-base text-neutral-600 sm:text-lg">
-                        We analyze every aspect of your website to uncover
-                        opportunities for improvement
+                        We evaluate every key aspect of your website—usability,
+                        accessibility, and performance—to identify friction
+                        points stopping users from converting.
                     </p>
                 </div>
 

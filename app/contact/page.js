@@ -131,7 +131,7 @@ export default function ContactRoute() {
           </div>
 
           <div className="flex-1">
-            <div className="rounded-[22px] bg-[#f7f3ea] px-6 py-10 shadow-[0_22px_50px_-35px_rgba(0,0,0,0.45)] sm:px-10">
+            <div className="rounded-[22px] bg-[#f7f3ea] px-6 py-10 sm:px-10">
               <ContactForm />
             </div>
           </div>

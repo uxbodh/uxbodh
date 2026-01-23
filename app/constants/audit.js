@@ -2,14 +2,20 @@ const Audits = [
     {
         title: "UI/UX audit",
         description:
-            "Comprehensive visual design analysis covering typography, color, spacing, and brand consistency.",
+            "We evaluate how design and experience impact conversions, retention, and task completion.",
         points: [
-            "Customer journey review",
-            "Design System Review",
-            "Visual Hierarchy",
-            "Brand Alignment",
-            "Form friction analysis",
-            "Conversion heuristic checks",
+            "Navigation clarity",
+            "Information architecture",
+            "Visual hierarchy",
+            "Content readability",
+            "Design system consistency",
+            "Brand alignment across screens",
+            "Form & checkout usability",
+            "Responsive experience check",
+            "Customer feedback",
+            "Customer opinion analysis",
+            "First-impression review",
+            "Competitor UX/UI comparison",
         ],
         icon: (
             <svg
@@ -61,14 +67,22 @@ const Audits = [
     {
         title: "Accessibility audit",
         description:
-            "Compliance check to ensure your website is accessible to all users, including those with disabilities.",
+            "Evaluate how usable your product is for people of all abilities and ensure accessibility compliance.",
         points: [
-            "Color contrast checks",
-            "Design System Review",
-            "Visual Hierarchy",
-            "Brand Alignment",
-            "Focus states & skip links",
-            "Responsive readability",
+            "WCAG 2.1 guideline compliance review",
+            "Read the page properly",
+            "Proper heading structure (H1–H6 hierarchy)",
+            "Color contrast ratio validation",
+            "Check if error messages are clear easy to notice",
+            "Focus states visible",
+            "Touch target size (tap area not too small)",
+            "Video captions & transcripts availability",
+            "Time-limited interactions alternatives",
+            "Accessible dropdowns, modals, dialogs",
+            "Consistent navigation patterns",
+            "Avoiding content that causes seizures (flashing content)",
+            "Mobile screen reader gesture support",
+            "Add confirmations before important actions like payments",
         ],
         icon: (
             <svg
@@ -121,14 +135,20 @@ const Audits = [
     {
         title: "Performance audit",
         description:
-            "Technical performance analysis identifying speed bottlenecks and optimization opportunities.",
+            "Identify what slows your site/app down and provide fixes to improve real-world speed and Core Web Vitals.",
         points: [
-            "Core Web Vitals review",
-            "Design System Review",
-            "Visual Hierarchy",
-            "Brand Alignment",
-            "Caching strategy",
-            "Third-party scripts",
+            "Overall page/app load time",
+            "Core Web Vitals (LCP, CLS, INP)",
+            "First Contentful Paint & Time to Interactive",
+            "Server response time (TTFB)",
+            "Mobile vs desktop speed comparison",
+            "Large image sizes or wrong image formats",
+            "Heavy scripts and third-party plugins slowing the site",
+            "Render-blocking CSS and JavaScript",
+            "Unused CSS and JavaScript removal opportunities",
+            "Caching setup (browser cache, server cache, CDN)",
+            "API response time and backend latency",
+            "Lazy loading for images and videos",
         ],
         icon: (
             <svg

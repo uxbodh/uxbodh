@@ -58,9 +58,10 @@ export default function Hero({ onOpenCTA }) {
                             : "opacity-0 translate-y-6"
                     }`}
                 >
-                    Get essential
+                   Get essential 
+
                     <br />
-                    customer insights
+                  customer insights
                 </h1>
                 <p
                     className={`mt-4 max-w-2xl text-base text-neutral-600 sm:text-lg transition-all duration-700 ease-out delay-100 ${
@@ -69,8 +70,8 @@ export default function Hero({ onOpenCTA }) {
                             : "opacity-0 translate-y-6"
                     }`}
                 >
-                    Get expert UI/UX analysis that reveals hidden issues and
-                    unlocks your website&apos;s full potential
+                   Expert UX audits that uncover hidden usability issues, improve user journeys, and increase sales, sign-ups, and engagement.
+
                 </p>
                 <div
                     className={`mt-8 flex flex-col items-center gap-3 sm:flex-row sm:gap-4 transition-all duration-700 ease-out delay-200 ${
@@ -79,7 +80,7 @@ export default function Hero({ onOpenCTA }) {
                             : "opacity-0 translate-y-4"
                     }`}
                 >
-                    <GetStartToday isOpen={handleCTAClick} />
+                    <GetStartToday buttontext="Get Detailed UX Audit Report" isOpen={handleCTAClick} />
                 </div>
 
                 <div className="relative w-full max-w-[1200px]">

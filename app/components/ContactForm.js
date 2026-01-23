@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useState } from "react";
 
+import { countryDialCodes } from "../constants/countryDialCodes";
+
 const initialState = {
   name: "",
   email: "",
@@ -137,9 +139,9 @@ export default function ContactForm({ onSuccess, resetSignal }) {
         />
       </div>
 
-      <div className="space-y-2">
+      <div className="flex flex-row  gap-4">
         <p className="text-sm font-semibold text-neutral-900">Interested in?</p>
-        <div className="flex flex-wrap items-center gap-5 text-sm font-medium text-neutral-900">
+        <div className="flex flex-wrap items-center justify-center gap-5 text-sm font-medium text-neutral-900">
           <Checkbox
             label="UX Audit"
             checked={form.interests.includes("UX Audit")}
@@ -151,7 +153,9 @@ export default function ContactForm({ onSuccess, resetSignal }) {
             onChange={() => toggleInterest("Design & Development")}
           />
         </div>
-        {errors.interests && <p className="text-xs text-red-500">{errors.interests}</p>}
+        {errors.interests && (
+          <p className="w-full text-center text-xs text-red-500">{errors.interests}</p>
+        )}
       </div>
 
       <FloatingTextarea
@@ -189,7 +193,7 @@ function FloatingInput({ label, value, onChange, type = "text", error }) {
       <label className="block">
         <div className="relative">
           <span
-            className={`${labelClasses} ${active ? "top-2 text-[11px]" : "top-1/2 -translate-y-1/2 text-xs"}`}
+            className={`${labelClasses} ${active ? "top-2 text-[11px]" : "top-1/2 -translate-y-1/2 text-sm"}`}
           >
             {label}
           </span>
@@ -214,19 +218,24 @@ function PhoneRow({ countryCode, phone, onCountryChange, onPhoneChange, error })
   return (
     <div className="space-y-1">
       <div className="flex w-full overflow-hidden rounded-[10px] border border-neutral-200 bg-white">
-        <div className="flex w-[90px] items-center justify-between px-3">
-          <input
-            type="text"
+        <div className="flex w-[160px] min-w-[160px] items-center gap-2 border-r border-neutral-200 px-3">
+          <select
             value={countryCode}
             onChange={onCountryChange}
-            className="w-full bg-transparent text-sm font-medium text-neutral-900 outline-none"
-          />
+            className="w-full appearance-none border-none bg-transparent text-sm font-medium text-neutral-900 outline-none"
+          >
+            {countryDialCodes.map((entry) => (
+              <option key={entry.code + entry.dial_code} value={entry.dial_code}>
+                {entry.dial_code} {entry.label}
+              </option>
+            ))}
+          </select>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            className="h-4 w-4 text-neutral-600"
+            className="h-3 w-3 text-neutral-600"
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 9l6 6 6-6" />
           </svg>

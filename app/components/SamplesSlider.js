@@ -10,13 +10,24 @@ const slides = [
     type: "Web UX Audit",
     title: "Web UX – Version 1",
     // OLD / AUDIT IMAGE (shown in slider)
-    image: "/images/home-popup-old.png",
+    image: "/images/old-image.jpg",
     // ORIGINAL / IMPROVED IMAGE (shown in modal)
     modalImage: "/images/home-popup.png",
     points: [
-      "Users are unable to understand where to click or what actions to take due to the cluttered layout. No clear CTA is visible above the fold, leaving users without guidance on the next step.",
-      "Content plays a crucial role in the overall UX. Currently, the content quality is quite poor and lacks clarity. Incorporating relevant SEO keywords would also help improve both user engagement and search visibility.",
-      "The “WhatsApp” and “Schedule a Call” CTAs can be positioned as sticky elements at the top, rather than floating in the middle of the page without context.",
+     "At first glance, the page feels visually heavy due to excessive use of blue colors and background gradients. Within the first five seconds, it is difficult to understand what the website is about.",
+"The menu item “Tool” can be changed to “Calculator”, as it is a more commonly used and understandable keyword, such as “Home Loan EMI Calculator.” The word “Tool” does not clearly explain what is being offered. Changing it to “Calculator” gives users better clarity that this section is about a home loan EMI calculator.",
+"There is no clear primary CTA, making it hard for users to know what to do next. The loan category tabs currently look like CTAs, which creates confusion.",
+"The content flow feels uneven and difficult to follow, appearing more like a zig-zag layout rather than a structured progression.",
+"The image of a man with a baby does not add meaningful value in this context.",
+"The H1 content lacks emotional impact, and using two colors in the headline feels unnecessary.",
+"In the “Select your city” section, the red location icon draws excessive attention.",
+"The WhatsApp and “Schedule a Call” options should be placed at the top and made sticky.",
+"The heading “Hidden charges? High EMI? Managing it alone?” is not aligned with the supporting points such as “0% commission,” “lowest rate,” and “support during and after the loan.”",
+"The points 0% commission, lowest rate, and support during and after the loan should be placed closer to the “Select your city” section, as these are strong decision-making factors that encourage users to proceed.",
+"In the bank minimum and maximum interest rate section, too many colors are used in headings and subheadings, making it difficult to read.",
+"Users are not aware of what the red “LIVE” tag represents or what value it adds.",
+"The search bar is almost hidden and not easily discoverable.",
+"Popular banks such as HDFC, ICICI, and Axis should be shown first, as they handle most home loans and build instant trust."
     ],
     hotspots: [
       { top: "28%", left: "70%" },
@@ -200,7 +211,12 @@ const SamplesSlider = () => {
                         style={{ top: spot.top, left: spot.left }}
                       >
                         <div className="flex items-center gap-2">
-                          <div className="h-8 w-8 rounded-full bg-black text-white flex items-center justify-center text-xs font-semibold shadow-md">
+                          <div className=" h-8 w-8 rounded-full 
+    text-white 
+    flex items-center justify-center 
+    text-xs font-semibold 
+    shadow-md 
+    zoom-3color">
                             {index + 1}
                           </div>
                           <div className="w-10 h-[2px] bg-black" />

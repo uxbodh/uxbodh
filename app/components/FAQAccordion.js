@@ -4,33 +4,93 @@ import { useState } from "react";
 
 const faqs = [
   {
-    question: "What is a UX Audit and why do I need one?",
-    answer:
-      "A UX Audit is a detailed evaluation of your website or app to uncover usability issues, design inconsistencies, and conversion barriers. It helps you understand what's confusing users and what's stopping them from taking action, so you can improve engagement and ROI.",
+    question: "What is a UX audit and why is it important?",
+    answer: (
+      <>
+        A UX audit is a detailed evaluation of your website or app to identify
+        usability issues that prevent users from converting. It reveals design
+        gaps, friction points, accessibility issues, and performance problems
+        that directly affect revenue.
+      </>
+    ),
   },
   {
-    question: "What do you check during a UX Audit?",
-    answer:
-      "We examine navigation, content clarity, accessibility, performance, forms, and conversion paths to highlight friction and opportunities.",
+    question: "How long does a UX audit take?",
+    answer: <>Most audits are completed within 5-10 working days depending on website size and complexity.</>,
   },
   {
-    question: "How long does a UX Audit take?",
-    answer: "Most audits take 10-14 days depending on complexity and scope.",
-  },
-  {
-    question: "Will I get actionable recommendations?",
-    answer:
-      "Yes. You'll receive prioritized, ready-to-implement tasks with examples, references, and acceptance criteria.",
+    question: "What do I receive after the audit?",
+    answer: (
+      <>
+        You receive a prioritized UX report including:
+        <ul className="mt-2 list-disc pl-5">
+          <li>screenshots and examples</li>
+          <li>issue explanations</li>
+          <li>business impact</li>
+          <li>recommended fixes</li>
+          <li>improvement checklist</li>
+        </ul>
+      </>
+    ),
   },
   {
     question: "Do you also audit mobile apps?",
-    answer:
-      "Absolutely. Every audit includes responsive checks to ensure great experiences on mobile, tablet, and desktop.",
+    answer: <>Yes, we audit websites, web apps, SaaS dashboards, and mobile applications.</>,
   },
   {
-    question: "Can you fix the issues after the audit?",
-    answer:
-      "We can collaborate with your team or lead implementation sprints to ship improvements quickly.",
+    question: "Will you fix issues as well?",
+    answer: (
+      <>
+        We provide implementation guidance. If you need hands-on design or
+        development support, that can be added as a separate service.
+      </>
+    ),
+  },
+  {
+    question: "What types of websites do you audit?",
+    answer: (
+      <>
+        We audit:
+        <ul className="mt-2 list-disc pl-5">
+          <li>corporate websites</li>
+          <li>landing pages</li>
+          <li>ecommerce stores</li>
+          <li>SaaS dashboards</li>
+          <li>mobile apps</li>
+          <li>portfolio and personal brands</li>
+          <li>blogs and content portals</li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    question: "How much does a UX audit cost?",
+    answer: (
+      <>
+        Pricing depends on:
+        <ul className="mt-2 list-disc pl-5">
+          <li>number of pages/screens</li>
+          <li>website complexity</li>
+          <li>whether analytics setup is included</li>
+          <li>depth of deliverables (basic vs in-depth)</li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    question: "Will a UX audit improve my conversion rate?",
+    answer: (
+      <>
+        Yes - when implemented correctly. Our audits focus on:
+        <ul className="mt-2 list-disc pl-5">
+          <li>Removing friction from checkout & forms</li>
+          <li>Improving CTA clarity</li>
+          <li>Fixing confusing navigation</li>
+          <li>Strengthening trust signals</li>
+          <li>Reducing unnecessary steps</li>
+        </ul>
+      </>
+    ),
   },
 ];
 
@@ -47,8 +107,9 @@ export default function FAQAccordion() {
     <section id="faq" className="bg-white px-6 py-24">
       <div className="mx-auto w-full max-w-[740px]">
         <div className="mx-auto max-w-[900px] text-center">
+         
           <h2 className="text-5xl font-bold tracking-tight text-black sm:text-[48px]">
-            No dumb questions
+            Trusted by leaders
           </h2>
         </div>
 
@@ -81,12 +142,12 @@ export default function FAQAccordion() {
                 {/* ANSWER */}
                 <div
                   className={`overflow-hidden transition-all duration-200 ${
-                    isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                    isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <p className="mt-2 w-[80%] text-[14px] leading-[1.65] text-[#000000] pb-2">
+                  <div className="mt-2 w-[80%] text-[14px] leading-[1.65] text-[#000000] pb-2">
                     {faq.answer}
-                  </p>
+                  </div>
                 </div>
               </div>
             );
