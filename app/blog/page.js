@@ -11,9 +11,9 @@ export default function BlogRoute() {
             <Image
               src="/images/comingsoon.jpg"
               alt="Coming soon Big News banner"
-              width={1300}
+              width={700}
               height={520}
-              className="h-auto w-full object-cover"
+              className="h-auto w-full max-w-[700px] m-auto object-cover"
               priority
             />
           </div>
