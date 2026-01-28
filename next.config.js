@@ -1,21 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // --- Static Export Configuration ---
-  // Enables export to static HTML
-  output: 'export',
-  distDir: 'out',
-  // --- Trailing Slash ---
-  // Good for static hosting (avoids 404s)
-  trailingSlash: true,
-
-  // --- Image Optimization ---
+  reactStrictMode: true, // optional but recommended
+  distDir: 'out', // you can keep a custom build folder if you like
+  trailingSlash: true, // optional
   images: {
     unoptimized: true, // disables on-demand image optimization
   },
-
-  // Optional: if you want a custom output folder for export
-  // The default for next export is 'out'
-  // You can specify like: "next export -o build"
+  // DO NOT set `output: 'export'` if you need API routes or server-side logic
 };
 
 module.exports = nextConfig;
