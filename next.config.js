@@ -1,12 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true, // optional but recommended
-  distDir: 'out', // you can keep a custom build folder if you like
-  trailingSlash: false, // optional
+  reactStrictMode: true,
+  trailingSlash: false,
   images: {
-    unoptimized: true, // disables on-demand image optimization
+    unoptimized: true,
   },
-  // DO NOT set `output: 'export'` if you need API routes or server-side logic
 };
 
 module.exports = nextConfig;
