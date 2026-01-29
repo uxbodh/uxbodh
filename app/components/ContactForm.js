@@ -1,11 +1,21 @@
 "use client";
 import { countryDialCodes } from "../constants/countryDialCodes";
 import { useForm } from "react-hook-form";
+import { sendEnquiryForm } from "../api/apiRoutes";
+import { useState } from "react";
 
-const ContactForm = () => {
+const ContactForm = ({ getFormData }) => {
+    const [formDataMsg, setFormDataMsg] = useState(null);
+    const [loading, setLoading] = useState(false);
+
+    const setFormDataFunction = (data) => {
+        getFormData(data);
+    };
+
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm({
         mode: "onChange", // show error on blur
@@ -16,9 +26,40 @@ const ContactForm = () => {
         },
     });
 
+    const SendContactForm = async (payload) => {
+        setLoading(true);
+        const res = await sendEnquiryForm(payload);
+        if(res?.data?.data?.status === "success") {
+            console.log("res", res?.data?.data);
+            setFormDataFunction(res?.data?.data);
+            setFormDataMsg(res?.data?.data);
+            reset({
+                fullname: "",
+                email: "",
+                phone: "",
+                query: "",
+                interests: [],
+                countryCode: "+91",
+            });
+            setTimeout(() => setFormDataMsg(null), 30000);
+        } else {
+            message.error(res?.data?.error?.message || "Something went wrong!!!")
+        }
+        setLoading(false);
+    };
+
     const onSubmit = (data) => {
-        console.log('form data',data)
-        alert("Form submitted successfully");
+        console.log("data", data);
+        const payload = {
+            fullname: data?.fullname,
+            email: data?.email.toLowerCase(),
+            phone: data?.phone,
+            query: data?.query,
+            countryCode: data?.countryCode,
+            interests: data?.interests,
+        };
+        console.log("payload", payload);
+        SendContactForm(payload);
     };
 
     return (
@@ -97,8 +138,7 @@ const ContactForm = () => {
                         } bg-white`}
                     >
                         <div className="flex w-[90px] min-w-[90px] items-center gap-2 border-r border-neutral-200 px-3">
-                            <select 
-                            className="w-full border-none bg-transparent text-sm font-medium text-neutral-900 outline-none">
+                            <select className="w-full border-none bg-transparent text-sm font-medium text-neutral-900 outline-none">
                                 {countryDialCodes.map((list) => (
                                     <option
                                         key={list.code}
@@ -214,10 +254,16 @@ const ContactForm = () => {
                 {/* Submit */}
                 <input
                     type="submit"
-                    value="Submit"
+                    value={loading ? "Sending..." : "Submit"}
                     className="primary-btn mt-5 flex w-full items-center justify-center cursor-pointer"
+                    disabled={loading}
                 />
             </div>
+            {formDataMsg && (
+                <div>
+                    <p style={{color: 'green'}}>{formDataMsg.message}</p>
+                </div>
+            )}
         </form>
     );
 };

@@ -141,6 +141,9 @@ body {
     font-size: 16px;
     line-height: 52px;
 }
+.primary-btn:disabled {
+    background: #e5e0e0;
+}
 
 .form-group.custom-checkbox input {
     padding: 0;
@@ -187,4 +190,20 @@ body {
 }
 .form-group.custom-checkbox input:checked + label:before {
     background: #000;
+}
+.success-modal {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: auto;
+    max-width: 500px;
+    background: #f6ffed;
+    padding: 20px;
+    border-radius: 6px;
+    color: #389e0d;
+    z-index: 9999;
+    border: 1px solid #b7eb8f;
+    font-size: 14px;
 }

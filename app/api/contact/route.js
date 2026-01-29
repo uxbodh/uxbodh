@@ -102,7 +102,13 @@ export async function POST(req) {
     } catch (error) {
         console.error("Contact form error:", error);
         return new Response(
-            JSON.stringify({ error: "Failed to submit form." }),
+            JSON.stringify({ 
+                data: {
+                    status: "failed",
+                    message: "Failed to submit form!",
+                    error: error
+                },
+            }),
             { status: 500, headers: { "Content-Type": "application/json" } },
         );
     }

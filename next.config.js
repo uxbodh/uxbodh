@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true, // optional but recommended
   distDir: 'out', // you can keep a custom build folder if you like
-  trailingSlash: true, // optional
+  trailingSlash: false, // optional
   images: {
     unoptimized: true, // disables on-demand image optimization
   },
