@@ -63,7 +63,7 @@ export default function TestimonialsSlider() {
       className="bg-[#f5f0e8] px-6 lg:px-8 py-32 "
     >
       <div className="mx-auto max-w-[1200px] text-center">
-        <h2 className="text-[38px] font-bold tracking-tight text-black sm:text-[40px]">
+        <h2 className="text-5xl font-semibold text-black mb-8">
           Trusted by leaders
         </h2>
       </div>
@@ -92,7 +92,7 @@ export default function TestimonialsSlider() {
                 {testimonials[current].quote}
               </p>
               <div className="pt-2">
-                <p className="text-[15px] font-semibold text-neutral-900">
+                <p className="text-[15px] font-semibold text-black">
                   {testimonials[current].name}
                 </p>
                 <p className="text-[13px] text-neutral-500">{testimonials[current].role}</p>
@@ -108,7 +108,7 @@ export default function TestimonialsSlider() {
               <p className="mt-3 text-[36px] font-semibold text-black leading-none">
                 {testimonials[current].metricLabel}
               </p>
-              <p className="mt-3 text-[16px] text-neutral-600 leading-tight">
+              <p className="mt-3 text-[16px] text-black leading-tight">
                 {testimonials[current].subLabel}
               </p>
             </div>

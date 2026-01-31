@@ -79,7 +79,7 @@ const features = [
 
 export default function BenefitsPage() {
   return (
-    <section id="benefits" className="bg-white px-6 py-20">
+    <section id="benefits" className="bg-white px-6 py-[220px]">
       <div className="mx-auto w-full max-w-[780px] text-center">
         <Heading />
         <ImageBlock />
@@ -94,7 +94,7 @@ function Heading() {
   return (
     <div className="space-y-2 mb-20">
       <h2
-        className="font-semibold text-neutral-900 text-center"
+        className="font-semibold text-black text-center"
         style={{
           fontSize: "60px",
           lineHeight: "80px",
@@ -166,7 +166,7 @@ function FeatureList() {
           </p>
 
           {feature.bullets ? (
-            <ul className="list-disc pl-5 space-y-2 text-black font-[400]">
+            <ul className="list-disc pl-5 py-10 text-black font-[400]">
               {feature.bullets.map((item) => (
                 <li key={item} style={{ fontSize: "16px", lineHeight: "28px" }}>
                   {item}

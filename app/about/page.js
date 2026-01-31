@@ -6,9 +6,9 @@ export default function AboutRoute() {
     <PageShell>
       <section className="bg-white px-6 py-16 lg:px-8">
         <div className="mx-auto w-full max-w-[660px]">
-          <p className="text-6xl font-medium text-neutral-900">About</p>
-          <h1 className="mt-2 text-[160px] font-extrabold tracking-tight text-neutral-900 ">
-            <span className="text-neutral-900">UX</span>
+          <p className="text-6xl font-medium text-black">About</p>
+          <h1 className="mt-2 text-[160px] font-extrabold tracking-tight text-black ">
+            <span className="text-black">UX</span>
             <span className="text-[#E94166]">bodh</span>
           </h1>
 
@@ -17,7 +17,7 @@ export default function AboutRoute() {
             converting.
           </p>
 
-          <div className="mt-5 space-y-4 text-base leading-loose text-neutral-600">
+          <div className="mt-5 space-y-4 text-base leading-loose text-black">
             <p className="mb-16">
               We specialize in conducting in-depth UI and UX audits to identify
               design gaps, usability issues, and areas for improvement — helping
@@ -34,7 +34,7 @@ export default function AboutRoute() {
 
           <div className="mt-14 mb-20">
             <h2 className="text-7xl font-semibold text-black mb-16">Our Mission</h2>
-            <div className="space-y-4 text-base leading-loose text-neutral-600">
+            <div className="space-y-4 text-base leading-loose text-black">
                <p className="mb-16">
                 To help brands create digital experiences that are clear,
                 accessible, and conversion-focused. We aim to simplify complex

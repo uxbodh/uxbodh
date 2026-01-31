@@ -108,7 +108,7 @@ export default function FAQAccordion() {
       <div className="mx-auto w-full max-w-[740px]">
         <div className="mx-auto max-w-[900px] text-center">
          
-          <h2 className="text-5xl font-bold tracking-tight text-black sm:text-[48px]">
+          <h2 className="text-5xl font-semibold text-black mb-8">
             Trusted by leaders
           </h2>
         </div>
@@ -124,7 +124,7 @@ export default function FAQAccordion() {
                   onClick={() => toggle(index)}
                   aria-expanded={isOpen}
                 >
-                  <span className="text-xl font-semibold text-[#000000]">
+                  <span className="text-xl font-medium text-[#000000]">
                     {faq.question}
                   </span>
 

@@ -37,9 +37,9 @@ export default function PageShell({ children, withCTA = false }) {
   const content = typeof children === "function" ? children({ openCta }) : children;
 
   return (
-    <div className="min-h-screen text-neutral-900 flex flex-col page-shell-root">
+    <div className="min-h-screen text-black flex flex-col page-shell-root">
       <Header onOpenCTA={withCTA ? openCta : undefined} />
-      <main className="flex-1">{content}</main>
+      <main className="flex-1 py-56">{content}</main>
       {withCTA && (
         <FinalCTA
           open={ctaOpen}

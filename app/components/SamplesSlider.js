@@ -8,7 +8,7 @@ const slides = [
   {
     id: 1,
     type: "Web UX Audit",
-    title: "Web UX – Version 1",
+    title: "UX audit lists",
     // OLD / AUDIT IMAGE (shown in slider)
     image: "/images/old-image.jpg",
     // ORIGINAL / IMPROVED IMAGE (shown in modal)
@@ -138,15 +138,17 @@ const SamplesSlider = () => {
   };
 
   return (
-    <section className="w-full flex justify-center bg-[#f7f0e7] py-16 px-4">
+    <section className="w-full flex justify-center bg-[#F6F3ED] py-[130px] px-4">
       <div className="max-w-[1200px] w-full mx-auto flex flex-col items-center">
         {/* Title */}
-        <h2 className="text-5xl font-semibold text-neutral-900 mb-8">
+        <h2 className="text-5xl font-semibold text-black mb-8">
           Some samples
         </h2>
 
         {/* Tabs */}
-        <div className="flex items-center justify-center gap-4 mb-10">
+
+
+        {/* <div className="flex items-center justify-center gap-4 mb-10">
           {tabs.map((tab) => {
             const isActive = tab === activeTab;
             return (
@@ -156,7 +158,7 @@ const SamplesSlider = () => {
                 className={`relative rounded-full px-6 py-4 text-sm font-medium transition-all duration-200 ${
                   isActive
                     ? "bg-neutral-900 text-white shadow-md"
-                    : "bg-white text-neutral-700 hover:bg-neutral-100 shadow-sm"
+                    : "bg-white text-black hover:bg-neutral-100 shadow-sm"
                 }`}
               >
                 {tab}
@@ -166,10 +168,10 @@ const SamplesSlider = () => {
               </button>
             );
           })}
-        </div>
+        </div> */}
 
         {/* Slider container (1040px) */}
-        <div className="relative w-[1040px] max-w-full mx-auto">
+        <div className="relative w-[1040px] max-w-full mx-auto my-6">
           {/* Browser mock top bar */}
           <div className="h-8 flex items-center gap-2 px-5 bg-[#444444] text-white text-xs rounded-tl-[25px] rounded-tr-[25px]">
             <div className="flex gap-1.5">
@@ -232,7 +234,7 @@ const SamplesSlider = () => {
               <h3 className="text-base font-semibold text-black mb-4">
                 {currentSlide.title}
               </h3>
-              <ol className="space-y-4 text-sm text-neutral-800 leading-relaxed overflow-y-auto">
+              <ol className="space-y-4 text-xs text-neutral-800 leading-relaxed overflow-y-auto">
                 {currentSlide.points.map((point, index) => (
                   <li
                     key={index}
@@ -253,7 +255,7 @@ const SamplesSlider = () => {
                       className={`transition-colors ${
                         index === activeHotspotIndex
                           ? "text-black"
-                          : "text-neutral-700 group-hover:text-black"
+                          : "text-black group-hover:text-black"
                       }`}
                     >
                       {point}

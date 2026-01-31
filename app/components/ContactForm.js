@@ -14,7 +14,7 @@ const initialState = {
 };
 
 const labelClasses =
-  "pointer-events-none absolute left-4 transition-all text-neutral-500 font-medium";
+  "pointer-events-none absolute left-5 mb-2 transition-all text-neutral-500 font-medium";
 
 export default function ContactForm({ onSuccess, resetSignal }) {
   const [form, setForm] = useState(initialState);
@@ -112,7 +112,7 @@ export default function ContactForm({ onSuccess, resetSignal }) {
 
   return (
     <form onSubmit={handleSubmit} className="mx-auto w-full max-w-[520px] space-y-5 text-left">
-      <h3 className="text-2xl font-semibold leading-tight text-neutral-900 sm:text-[28px]">
+      <h3 className="text-3xl  text-black font-medium">
         Get start here
       </h3>
 
@@ -140,8 +140,8 @@ export default function ContactForm({ onSuccess, resetSignal }) {
       </div>
 
       <div className="flex flex-row  gap-4">
-        <p className="text-sm font-semibold text-neutral-900">Interested in?</p>
-        <div className="flex flex-wrap items-center justify-center gap-5 text-sm font-medium text-neutral-900">
+        <p className="text-sm font-semibold text-black">Interested in?</p>
+        <div className="flex flex-wrap items-center justify-center gap-5 text-sm font-medium text-black">
           <Checkbox
             label="UX Audit"
             checked={form.interests.includes("UX Audit")}
@@ -203,7 +203,7 @@ function FloatingInput({ label, value, onChange, type = "text", error }) {
             onChange={onChange}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
-            className="h-[52px] w-full rounded-[10px] border border-neutral-200 bg-white px-4 pb-2 pt-5 text-sm font-medium text-neutral-900 outline-none transition focus:border-neutral-400"
+            className="h-[58px] w-full rounded-[10px] border border-neutral-200 bg-white py-4 px-5 text-sm font-medium text-black outline-none transition focus:border-neutral-400"
           />
         </div>
       </label>
@@ -222,7 +222,7 @@ function PhoneRow({ countryCode, phone, onCountryChange, onPhoneChange, error })
           <select
             value={countryCode}
             onChange={onCountryChange}
-            className="w-full appearance-none border-none bg-transparent text-sm font-medium text-neutral-900 outline-none"
+            className="w-full appearance-none border-none bg-transparent text-sm font-medium text-black outline-none"
           >
             {countryDialCodes.map((entry) => (
               <option key={entry.code + entry.dial_code} value={entry.dial_code}>
@@ -235,14 +235,14 @@ function PhoneRow({ countryCode, phone, onCountryChange, onPhoneChange, error })
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            className="h-3 w-3 text-neutral-600"
+            className="h-3 w-3 text-black"
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 9l6 6 6-6" />
           </svg>
         </div>
         <div className="relative flex-1 border-l border-neutral-200">
           <span
-            className={`${labelClasses} ${activePhone ? "top-2 text-[11px]" : "top-1/2 -translate-y-1/2 text-xs"}`}
+            className={`${labelClasses} ${activePhone ? "top-2 text-[11px]" : "top-1/2 -translate-y-1/2 text-sm"}`}
           >
             Phone
           </span>
@@ -252,7 +252,7 @@ function PhoneRow({ countryCode, phone, onCountryChange, onPhoneChange, error })
             onChange={onPhoneChange}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
-            className="h-[52px] w-full rounded-none px-4 pb-2 pt-5 text-sm font-medium text-neutral-900 outline-none transition focus:border-neutral-400"
+            className="h-[52px] w-full rounded-none px-4 pb-2 pt-5 text-sm font-medium text-black outline-none transition focus:border-neutral-400"
           />
         </div>
       </div>
@@ -263,7 +263,7 @@ function PhoneRow({ countryCode, phone, onCountryChange, onPhoneChange, error })
 
 function Checkbox({ label, checked, onChange }) {
   return (
-    <label className="inline-flex items-center gap-2 text-sm font-medium text-neutral-900">
+    <label className="inline-flex items-center gap-2 text-sm font-medium text-black">
       <input
         type="checkbox"
         checked={checked}
@@ -283,7 +283,7 @@ function FloatingTextarea({ label, value, onChange, error }) {
       <label className="block">
         <div className="relative">
           <span
-            className={`${labelClasses} ${active ? "top-2 text-[11px]" : "top-4 text-xs"}`}
+            className={`${labelClasses} ${active ? "top-2 text-[11px]" : "top-4 text-sm"}`}sm
           >
             {label}
           </span>
@@ -293,7 +293,7 @@ function FloatingTextarea({ label, value, onChange, error }) {
             onChange={onChange}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
-            className="w-full rounded-[10px] border border-neutral-200 bg-white px-4 pb-3 pt-6 text-sm font-medium text-neutral-900 outline-none transition focus:border-neutral-400"
+            className="w-full rounded-[10px] border border-neutral-200 bg-white px-4 pb-3 pt-6 text-sm font-medium text-black outline-none transition focus:border-neutral-400"
           />
         </div>
       </label>
