@@ -78,7 +78,7 @@ export default function FullPagePopupSlider({
         onClick={onClose}
       >
         <div className="rounded-2xl bg-white p-8 text-center">
-          <p className="text-neutral-900">No slides available</p>
+          <p className="text-black">No slides available</p>
           <button
             onClick={onClose}
             className="mt-4 rounded bg-black px-4 py-2 text-white"
@@ -114,7 +114,7 @@ export default function FullPagePopupSlider({
             e.stopPropagation();
             onClose();
           }}
-          className="absolute right-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-neutral-300 bg-white text-neutral-900 transition hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-black/10"
+          className="absolute right-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-neutral-300 bg-white text-black transition hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-black/10"
           aria-label="Close modal"
         >
           <svg
@@ -151,7 +151,7 @@ export default function FullPagePopupSlider({
           e.stopPropagation();
           handlePrev();
         }}
-        className="absolute left-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white text-neutral-900 shadow-lg transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/60 sm:left-6 sm:h-12 sm:w-12"
+        className="absolute left-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white text-black shadow-lg transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/60 sm:left-6 sm:h-12 sm:w-12"
         aria-label="Previous slide"
       >
         <svg
@@ -174,7 +174,7 @@ export default function FullPagePopupSlider({
           e.stopPropagation();
           handleNext();
         }}
-        className="absolute right-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white text-neutral-900 shadow-lg transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/60 sm:right-6 sm:h-12 sm:w-12"
+        className="absolute right-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white text-black shadow-lg transition hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/60 sm:right-6 sm:h-12 sm:w-12"
         aria-label="Next slide"
       >
         <svg

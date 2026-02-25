@@ -39,13 +39,13 @@ export default function ChallengesSolutions({ solutionImage }) {
       <div className="relative z-10 mx-auto w-full max-w-[1200px] px-6 py-16 sm:px-8 sm:py-20">
         {/* Challenges Section */}
         <div className="mb-20 sm:mb-24">
-          <div className="grid gap-[180px] md:grid-cols-2 md:items-start">
+          <div className="grid gap-[180px] md:grid-cols-[40%_50%] md:items-start">
             {/* Left Column - Heading and Sub-heading */}
             <div className="flex flex-col gap-4">
               <h2 className="text-4xl text-white font-bold sm:text-5xl lg:text-6xl">
                 {challengesData.heading}
               </h2>
-              <h3 className="text-3xl font-normal leading-relaxed text-white sm:text-[26px] lg:text-[26px]">
+              <h3 className="text-2xl font-normal leading-relaxed  text-white/60">
                 {challengesData.subHeading}
               </h3>
             </div>
@@ -55,7 +55,7 @@ export default function ChallengesSolutions({ solutionImage }) {
               {challengesData.paragraphs.map((paragraph, index) => (
                 <p
                   key={index}
-                  className="text-base font-normal leading-relaxed text-white sm:text-lg lg:text-[18px]"
+                  className="text-lg font-normal  text-white/40 leading-9 "
                 >
                   {paragraph}
                 </p>
@@ -65,8 +65,8 @@ export default function ChallengesSolutions({ solutionImage }) {
         </div>
 
         {/* Solutions Section */}
-        <div>
-          <div className="grid gap-[180px] md:grid-cols-2 md:items-start">
+        <div className="pt-[120px]">
+          <div className="grid gap-[180px] md:grid-cols-[40%_50%] md:items-start">
             {/* Left Column - Heading and Sub-heading */}
             <div className="flex flex-col gap-4 sm:gap-5 lg:gap-6">
               {/* Main Heading with Gradient */}
@@ -77,7 +77,7 @@ export default function ChallengesSolutions({ solutionImage }) {
               </h2>
 
               {/* Sub-heading */}
-              <p className="text-xl font-normal leading-relaxed tracking-[0.02em] text-white sm:text-2xl sm:tracking-[0.03em] lg:text-[26px]">
+              <p className="text-2xl font-normal leading-9  text-white/60">
                 {solutionsData.subHeading}
               </p>
             </div>
@@ -87,7 +87,7 @@ export default function ChallengesSolutions({ solutionImage }) {
               {solutionsData.paragraphs.map((paragraph, index) => (
                 <p
                   key={index}
-                  className="text-base font-normal leading-relaxed text-white sm:text-lg lg:text-[18px]"
+                  className="text-base font-normal leading-relaxed text-white/40 sm:text-lg lg:text-[18px]"
                 >
                   {paragraph}
                 </p>

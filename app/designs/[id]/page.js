@@ -93,7 +93,7 @@ export default function DesignDetailPage() {
       <ChallengesSolutions solutionImage={design.image} />
 
       {/* CTA */}
-      <section className="bg-black py-12">
+      {/* <section className="bg-black py-12">
         <div className="mx-auto max-w-[1200px] px-6 text-center">
           <button
             type="button"
@@ -103,7 +103,7 @@ export default function DesignDetailPage() {
             View Improved Design
           </button>
         </div>
-      </section>
+      </section> */}
 
       {/* Client-only Modal */}
       <FullPagePopupSlider

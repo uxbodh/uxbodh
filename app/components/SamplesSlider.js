@@ -8,7 +8,7 @@ const slides = [
   {
     id: 1,
     type: "Web UX Audit",
-    title: "Web UX – Version 1",
+    title: "UX audit lists",
     // OLD / AUDIT IMAGE (shown in slider)
     image: "/images/old-image.jpg",
     // ORIGINAL / IMPROVED IMAGE (shown in modal)
@@ -138,15 +138,17 @@ const SamplesSlider = () => {
   };
 
   return (
-    <section className="w-full flex justify-center bg-[#f7f0e7] py-16 px-4">
+    <section className="w-full flex justify-center bg-[#F6F3ED] py-[130px] px-4">
       <div className="max-w-[1200px] w-full mx-auto flex flex-col items-center">
         {/* Title */}
-        <h2 className="text-5xl font-semibold text-neutral-900 mb-8">
+        <h2 className="text-3xl md:text-5xl font-semibold text-black mb-8">
           Some samples
         </h2>
 
         {/* Tabs */}
-        <div className="flex items-center justify-center gap-4 mb-10">
+
+
+        {/* <div className="flex items-center justify-center gap-4 mb-10">
           {tabs.map((tab) => {
             const isActive = tab === activeTab;
             return (
@@ -156,7 +158,7 @@ const SamplesSlider = () => {
                 className={`relative rounded-full px-6 py-4 text-sm font-medium transition-all duration-200 ${
                   isActive
                     ? "bg-neutral-900 text-white shadow-md"
-                    : "bg-white text-neutral-700 hover:bg-neutral-100 shadow-sm"
+                    : "bg-white text-black hover:bg-neutral-100 shadow-sm"
                 }`}
               >
                 {tab}
@@ -166,10 +168,10 @@ const SamplesSlider = () => {
               </button>
             );
           })}
-        </div>
+        </div> */}
 
         {/* Slider container (1040px) */}
-        <div className="relative w-[1040px] max-w-full mx-auto">
+        <div className="relative w-full max-w-[1040px] mx-auto my-6">
           {/* Browser mock top bar */}
           <div className="h-8 flex items-center gap-2 px-5 bg-[#444444] text-white text-xs rounded-tl-[25px] rounded-tr-[25px]">
             <div className="flex gap-1.5">
@@ -182,11 +184,18 @@ const SamplesSlider = () => {
             </div>
           </div>
 
-          <div className="h-[590px] w-full rounded-bl-[28px] rounded-br-[28px] bg-[#444444] shadow-[0_18px_40px_rgba(0,0,0,0.15)] overflow-hidden flex p-1 pt-0">
+          <div className="h-auto lg:h-[590px] w-full 
+rounded-b-[28px] 
+rounded-t-none 
+bg-[#444444] 
+shadow-[0_18px_40px_rgba(0,0,0,0.15)] 
+overflow-hidden 
+flex flex-col lg:flex-row 
+p-1 pt-0">
             {/* Left side (710px) */}
-            <div className="w-[710px] h-full bg-white border-r border-neutral-200 flex flex-col overflow-hidden rounded-bl-[20px]">
+            <div className="w-full lg:w-[710px] h-full bg-white lg:border-r lg:border-neutral-200 flex flex-col overflow-hidden lg:rounded-bl-[20px] lg:rounded-tl-[20px]">
               {/* Screenshot area */}
-              <div className="flex-1 relative">
+              <div className="relative h-full w-full">
                 {/* OLD / AUDIT IMAGE */}
                 <Image
                   src={currentSlide.image}
@@ -228,11 +237,16 @@ const SamplesSlider = () => {
             </div>
 
             {/* Right side (remaining width) */}
-            <div className="flex-1 h-full bg-[#fff5e5] p-8 pl-4 pr-4 flex flex-col rounded-br-[20px]">
+            <div className="flex-1 w-full h-full 
+bg-[#fff5e5] 
+p-6 sm:p-8 
+flex flex-col 
+lg:rounded-br-[20px] 
+lg:rounded-tr-[20px]">
               <h3 className="text-base font-semibold text-black mb-4">
                 {currentSlide.title}
               </h3>
-              <ol className="space-y-4 text-sm text-neutral-800 leading-relaxed overflow-y-auto">
+              <ol className="space-y-4 text-xs text-neutral-800 leading-relaxed overflow-y-auto max-h-[300px] lg:max-h-none">
                 {currentSlide.points.map((point, index) => (
                   <li
                     key={index}
@@ -253,7 +267,7 @@ const SamplesSlider = () => {
                       className={`transition-colors ${
                         index === activeHotspotIndex
                           ? "text-black"
-                          : "text-neutral-700 group-hover:text-black"
+                          : "text-black group-hover:text-black"
                       }`}
                     >
                       {point}
@@ -267,7 +281,7 @@ const SamplesSlider = () => {
           {/* Left arrow (main slider) */}
           <button
             onClick={handlePrev}
-            className="absolute left-[-80px] top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md hover:bg-neutral-100 transition"
+            className="absolute left-[-10px] lg:left-[-32px] top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md hover:bg-neutral-100 transition sm:left-[-56px]"
           >
             <span className="text-xl">&lt;</span>
           </button>
@@ -275,7 +289,7 @@ const SamplesSlider = () => {
           {/* Right arrow (main slider) */}
           <button
             onClick={handleNext}
-            className="absolute right-[-80px] top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md hover:bg-neutral-100 transition"
+            className="absolute right-[-10px] lg:right-[-32px] top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md hover:bg-neutral-100 transition sm:right-[-56px]"
           >
             <span className="text-xl">&gt;</span>
           </button>

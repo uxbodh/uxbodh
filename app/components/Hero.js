@@ -48,11 +48,11 @@ export default function Hero({ onOpenCTA }) {
         <section
             ref={sectionRef}
             id="hero"
-            className="bg-white px-6 pb-0 pt-16 lg:px-8"
+            className="bg-white pb-0"
         >
-            <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center text-center">
+            <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center text-center  pb-0">
                 <h1
-                    className={`text-6xl font-semibold  tracking-tight text-neutral-900  lg:text-6xl lg:leading-tight transition-all duration-700 ease-out ${
+                    className={`text-4xl font-semibold  tracking-tight text-black  lg:text-6xl lg:leading-tight transition-all duration-700 ease-out ${
                         showTitle
                             ? "opacity-100 translate-y-0"
                             : "opacity-0 translate-y-6"
@@ -64,7 +64,7 @@ export default function Hero({ onOpenCTA }) {
                   customer insights
                 </h1>
                 <p
-                    className={`mt-4 max-w-2xl text-base text-neutral-600 sm:text-lg transition-all duration-700 ease-out delay-100 ${
+                    className={`mt-4 max-w-2xl text-base text-black sm:text-lg transition-all duration-700 ease-out delay-100 ${
                         showBody
                             ? "opacity-100 translate-y-0"
                             : "opacity-0 translate-y-6"

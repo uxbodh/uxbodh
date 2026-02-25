@@ -60,10 +60,10 @@ export default function TestimonialsSlider() {
   return (
     <section
       id="contact"
-      className="bg-[#f5f0e8] px-6 lg:px-8 py-32 "
+      className="bg-[#f5f0e8] px-6 lg:px-8 py-24 sm:py-32"
     >
       <div className="mx-auto max-w-[1200px] text-center">
-        <h2 className="text-[38px] font-bold tracking-tight text-black sm:text-[40px]">
+        <h2 className="text-4xl sm:text-5xl font-semibold text-black mb-8">
           Trusted by leaders
         </h2>
       </div>
@@ -71,13 +71,13 @@ export default function TestimonialsSlider() {
       <div className="relative mx-auto mt-14 flex max-w-[1200px] items-center justify-center">
         <button
           onClick={handlePrev}
-          className="absolute left-[-32px] top-1/2 z-10 -translate-y-1/2 flex h-[42px] w-[42px] items-center justify-center rounded-full bg-white text-neutral-800 shadow-[0_10px_28px_-16px_rgba(0,0,0,0.35)] ring-1 ring-neutral-200 transition hover:bg-gray-100 sm:left-[-46px]"
+          className="absolute left-[-18px] lg:left-[-32px] top-1/2 z-10 -translate-y-1/2 flex h-[42px] w-[42px] items-center justify-center rounded-full bg-white text-neutral-800 shadow-[0_10px_28px_-16px_rgba(0,0,0,0.35)] ring-1 ring-neutral-200 transition hover:bg-gray-100 sm:left-[-46px]"
           aria-label="Previous testimonial"
         >
           <ArrowLeft />
         </button>
 
-        <div className="mx-auto flex h-full min-h-[430px] w-full max-w-[1040px] items-center overflow-hidden rounded-[30px] bg-white px-12 py-12 shadow-[0_80px_120px_-70px_rgba(0,0,0,0.35)] ring-1 ring-neutral-100 sm:min-h-[440px]">
+        <div className="mx-auto flex h-full min-h-[360px] w-full max-w-[1040px] items-center overflow-hidden rounded-[30px] bg-white px-6 py-6 shadow-[0_80px_120px_-70px_rgba(0,0,0,0.35)] ring-1 ring-neutral-100 sm:min-h-[440px] sm:px-12 sm:py-12">
           <div className="grid w-full items-center gap-10 md:grid-cols-[1.6fr_auto_1fr]">
             <div className="space-y-6 text-left">
               <div className="flex items-center gap-2 text-sm font-semibold text-neutral-800">
@@ -92,7 +92,7 @@ export default function TestimonialsSlider() {
                 {testimonials[current].quote}
               </p>
               <div className="pt-2">
-                <p className="text-[15px] font-semibold text-neutral-900">
+                <p className="text-[15px] font-semibold text-black">
                   {testimonials[current].name}
                 </p>
                 <p className="text-[13px] text-neutral-500">{testimonials[current].role}</p>
@@ -108,7 +108,7 @@ export default function TestimonialsSlider() {
               <p className="mt-3 text-[36px] font-semibold text-black leading-none">
                 {testimonials[current].metricLabel}
               </p>
-              <p className="mt-3 text-[16px] text-neutral-600 leading-tight">
+              <p className="mt-3 text-[16px] text-black leading-tight">
                 {testimonials[current].subLabel}
               </p>
             </div>
@@ -117,7 +117,7 @@ export default function TestimonialsSlider() {
 
         <button
           onClick={handleNext}
-          className="absolute right-[-32px] top-1/2 z-10 -translate-y-1/2 flex h-[42px] w-[42px] items-center justify-center rounded-full bg-white text-neutral-800 shadow-[0_10px_28px_-16px_rgba(0,0,0,0.35)] ring-1 ring-neutral-200 transition hover:bg-gray-100 sm:right-[-46px]"
+          className="absolute right-[-18px] lg:right-[-32px] top-1/2 z-10 -translate-y-1/2 flex h-[42px] w-[42px] items-center justify-center rounded-full bg-white text-neutral-800 shadow-[0_10px_28px_-16px_rgba(0,0,0,0.35)] ring-1 ring-neutral-200 transition hover:bg-gray-100 sm:right-[-46px]"
           aria-label="Next testimonial"
         >
           <ArrowRight />

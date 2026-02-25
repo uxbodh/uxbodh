@@ -79,7 +79,7 @@ const features = [
 
 export default function BenefitsPage() {
   return (
-    <section id="benefits" className="bg-white px-6 py-20">
+    <section id="benefits" className="bg-white">
       <div className="mx-auto w-full max-w-[780px] text-center">
         <Heading />
         <ImageBlock />
@@ -92,14 +92,8 @@ export default function BenefitsPage() {
 
 function Heading() {
   return (
-    <div className="space-y-2 mb-20">
-      <h2
-        className="font-semibold text-neutral-900 text-center"
-        style={{
-          fontSize: "60px",
-          lineHeight: "80px",
-        }}
-      >
+    <div className="space-y-2 mb-20 px-5 lg:px-0">
+      <h2 className="font-semibold text-black text-center text-[36px] lg:text-[40px] leading-[38px]  sm:leading-[80px]">
         We will make your online
         <br />
         presence{" "}
@@ -108,13 +102,7 @@ function Heading() {
         </span>
       </h2>
 
-      <p
-        className="mt-2 text-neutral-500 text-center"
-        style={{
-          fontSize: "18px",
-          lineHeight: "26px",
-        }}
-      >
+      <p className="mt-2 text-neutral-500 text-center text-base leading-[26px]">
         Get expert UI/UX analysis that reveals hidden issues and unlocks your
         website's full potential
       </p>
@@ -126,13 +114,13 @@ function ImageBlock() {
   return (
     <div className="mt-10 flex justify-center">
       <div className="relative flex w-full">
-        <div className="flex w-full items-center justify-between gap-">
+        <div className="flex w-full items-center justify-center">
           <Image
             src="/images/benefits.jpg"
             alt="Pixel T-Rex dinosaur"
             width={780}
             height={450}
-            className="object-contain"
+            className="w-full max-w-[780px] object-contain"
           />
         </div>
       </div>
@@ -142,33 +130,21 @@ function ImageBlock() {
 
 function FeatureList() {
   return (
-    <div className="w-[660px] mx-auto  mt-16 space-y-8 text-left mb-32">
+    <div className="w-full max-w-[660px] mx-auto mt-16 space-y-24 text-left mb-32 px-5 lg:px-0">
       {features.map((feature) => (
-        <div key={feature.title} className="space-y-2">
-          <h3
-            className="font-[500] text-black"
-            style={{
-              fontSize: "40px",
-              lineHeight: "60px",
-            }}
-          >
+        <div key={feature.title} className="">
+          <h3 className=" text-black text-4xl leading-[36px] sm:text-[40px] sm:leading-[58px] pb-7">
             {feature.title}
           </h3>
 
-          <p
-            className="text-black font-[400]"
-            style={{
-              fontSize: "16px",
-              lineHeight: "30px",
-            }}
-          >
+          <p className="text-black font-normal text-base leading-[30px]">
             {feature.body}
           </p>
 
           {feature.bullets ? (
-            <ul className="list-disc pl-5 space-y-2 text-black font-[400]">
+            <ul className="list-disc pl-5 py-8 text-black font-medium">
               {feature.bullets.map((item) => (
-                <li key={item} style={{ fontSize: "16px", lineHeight: "28px" }}>
+                <li key={item} className="text-base leading-[28px]">
                   {item}
                 </li>
               ))}
@@ -176,13 +152,7 @@ function FeatureList() {
           ) : null}
 
           {feature.footer ? (
-            <p
-              className="text-black font-[400]"
-              style={{
-                fontSize: "16px",
-                lineHeight: "30px",
-              }}
-            >
+            <p className="text-black font-medium text-base leading-[30px]">
               {feature.footer}
             </p>
           ) : null}

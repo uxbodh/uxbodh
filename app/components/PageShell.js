@@ -10,6 +10,10 @@ export default function PageShell({ children, withCTA = false }) {
   const [ctaOpen, setCtaOpen] = useState(false);
   const [ctaResetSignal, setCtaResetSignal] = useState(0);
   const pathname = usePathname();
+  const isDesignSection = pathname?.startsWith("/designs") ?? false;
+  const mainClassName = isDesignSection
+    ? "flex-1"
+    : "flex-1 pt-[102px]";
 
   useEffect(() => {
     const segments = pathname?.split("/").filter(Boolean) || [];
@@ -37,9 +41,9 @@ export default function PageShell({ children, withCTA = false }) {
   const content = typeof children === "function" ? children({ openCta }) : children;
 
   return (
-    <div className="min-h-screen text-neutral-900 flex flex-col page-shell-root">
+    <div className="min-h-screen text-black flex flex-col page-shell-root">
       <Header onOpenCTA={withCTA ? openCta : undefined} />
-      <main className="flex-1">{content}</main>
+      <main className={mainClassName}>{content}</main>
       {withCTA && (
         <FinalCTA
           open={ctaOpen}

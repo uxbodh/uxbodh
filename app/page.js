@@ -19,23 +19,13 @@ const SamplesSection = dynamic(() => import("./components/SamplesSlider"), {
 
 export default function Home() {
     return (
-        // <>
-        //   <div style={{width: '100%', textAlign: 'center', marginTop: 300}}>
-        //     <h1>Welcome to UXbodh</h1>
-        //     <br />
-        //     <h6>Coming Soon...</h6>
-        //   </div>
-        // </>
-
-        <>
-            <PageShell withCTA>
-                <Hero />
-                <SamplesSection />
-                <AuditSection />
-                <ProcessSection />
-                <TestimonialsSlider />
-                <FAQAccordion />
-            </PageShell>
-        </>
+        <PageShell>
+            <Hero />
+            <SamplesSection />
+            <AuditSection />
+            <ProcessSection />
+            <TestimonialsSlider />
+            <FAQAccordion />
+        </PageShell>
     );
 }

@@ -4,25 +4,36 @@ import RelaxHero from "../components/RelaxHero";
 export default function AboutRoute() {
   return (
     <PageShell>
-      <section className="bg-white px-6 py-16 lg:px-8">
-        <div className="mx-auto w-full max-w-[660px]">
-          <p className="text-6xl font-medium text-neutral-900">About</p>
-          <h1 className="mt-2 text-[160px] font-extrabold tracking-tight text-neutral-900 ">
-            <span className="text-neutral-900">UX</span>
+      <section className="bg-white">
+        <div className="mx-auto w-full max-w-[680px]">
+          {/* About Title */}
+          <p className="text-[40px] lg:text-[56px] font-medium text-black leading-tight">
+            About
+          </p>
+          
+          {/* UXbodh Logo Text */}
+          <h1 className="mt-0 text-[80px] lg:text-[140px] font-extrabold tracking-tight leading-[0.85]">
+            <span className="text-black">UX</span>
             <span className="text-[#E94166]">bodh</span>
           </h1>
 
-          <p className="mt-6 max-w-2xl text-2xl font-semibold leading-10 ">
+          {/* Main Tagline */}
+          <p className="mt-8 text-[18px] lg:text-[20px] font-medium leading-[1.6] text-black">
             At UXbodh, we help businesses uncover what&apos;s really stopping users from
             converting.
           </p>
 
-          <div className="mt-5 space-y-4 text-base leading-loose text-neutral-600">
-            <p className="mb-16">
+          {/* First Paragraph */}
+          <div className="mt-8 text-[15px] lg:text-[16px] leading-[1.75] text-neutral-700">
+            <p>
               We specialize in conducting in-depth UI and UX audits to identify
               design gaps, usability issues, and areas for improvement — helping
               businesses enhance user satisfaction and conversion rates.
             </p>
+          </div>
+
+          {/* Second Paragraph */}
+          <div className="mt-6 text-[15px] lg:text-[16px] leading-[1.75] text-neutral-700">
             <p>
               Beyond audits, we also design intuitive, high-performing websites
               and mobile apps that align with your brand, engage your users, and
@@ -32,17 +43,26 @@ export default function AboutRoute() {
             </p>
           </div>
 
-          <div className="mt-14 mb-20">
-            <h2 className="text-7xl font-semibold text-black mb-16">Our Mission</h2>
-            <div className="space-y-4 text-base leading-loose text-neutral-600">
-               <p className="mb-16">
+          {/* Our Mission Section */}
+          <div className="mt-20 lg:mt-28">
+            <h2 className="text-[40px] lg:text-[56px] font-semibold text-black leading-tight mb-8">
+              Our Mission
+            </h2>
+            
+            {/* Mission Paragraph 1 */}
+            <div className="text-[15px] lg:text-[16px] leading-[1.75] text-neutral-700">
+              <p>
                 To help brands create digital experiences that are clear,
                 accessible, and conversion-focused. We aim to simplify complex
                 user journeys and turn them into intuitive, enjoyable
                 interactions that drive measurable growth.
               </p>
+            </div>
+
+            {/* Mission Paragraph 2 */}
+            <div className="mt-6 text-[15px] lg:text-[16px] leading-[1.75] text-neutral-700">
               <p>
-                We become a trusted global partner for UX excellence, empowering
+                To become a trusted global partner for UX excellence, empowering
                 businesses to connect better with their audiences through
                 seamless design, usability, and innovation. We envision a
                 digital world where every interaction feels effortless and every
@@ -50,10 +70,12 @@ export default function AboutRoute() {
               </p>
             </div>
           </div>
- </div>
- <RelaxHero  bgClass="bg-[#f9f5f5]" />
+        </div>
 
-       
+        {/* Relax Hero Section */}
+        <div className="mt-20 lg:mt-32">
+          <RelaxHero bgClass="bg-[#f9f5f5]" />
+        </div>
       </section>
     </PageShell>
   );

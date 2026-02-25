@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-
 import { navLinks } from "../constants/navLinks";
 
 export default function Header({
@@ -13,29 +12,53 @@ export default function Header({
   isTransparentOverride,
   headerBgOverride,
 }) {
-  const [open, setOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  // ✅ Sliding underline state (desktop)
+  const [indicator, setIndicator] = useState({ left: 0, width: 0, visible: false });
+  const navRef = useRef(null);
+
   const pathname = usePathname();
+
   const isDesignsPage = pathname === "/designs";
-  const isDesignDetailPage = pathname?.startsWith("/designs/") && pathname !== "/designs";
+  const isDesignDetailPage =
+    pathname?.startsWith("/designs/") && pathname !== "/designs";
   const needsScrollEffect = isDesignsPage || isDesignDetailPage;
-  const isActiveLink = (href) => {
-    if (href === "/designs") {
-      return pathname === "/designs" || pathname?.startsWith("/designs/");
-    }
-    return pathname === href;
+
+  const normalizePath = (p) => {
+    if (!p) return "/";
+    const x = p.replace(/\/+$/, "");
+    return x === "" ? "/" : x;
   };
+
+  const isActiveLink = (href) => {
+    const current = normalizePath(pathname);
+    const target = normalizePath(href);
+
+    if (target === "/designs") {
+      return current === "/designs" || current.startsWith("/designs/");
+    }
+    return current === target;
+  };
+
+  // active href (for underline default position)
+  const activeHref = useMemo(() => {
+    const current = normalizePath(pathname);
+    const found = navLinks.find((l) => {
+      const target = normalizePath(l.href);
+      if (target === "/designs") return current === "/designs" || current.startsWith("/designs/");
+      return current === target;
+    });
+    return found?.href || null;
+  }, [pathname]);
 
   useEffect(() => {
     if (!needsScrollEffect) {
       setScrolled(false);
       return;
     }
-
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -43,143 +66,262 @@ export default function Header({
 
   const isTransparent = needsScrollEffect && !scrolled;
   const isPink = needsScrollEffect && scrolled;
-  const headerBg = isTransparent
+
+  const headerBg = headerBgOverride
+    ? headerBgOverride
+    : isTransparentOverride
+    ? "bg-transparent"
+    : isTransparent
     ? "bg-transparent"
     : isPink
-    ? "bg-[#f74d7b]"
+    ? "bg-[#232323]"
     : "bg-white/80 backdrop-blur-md";
 
+  // ✅ helper: set underline based on element position inside nav
+  const moveIndicatorToEl = (el) => {
+    if (!el || !navRef.current) return;
+    const navRect = navRef.current.getBoundingClientRect();
+    const rect = el.getBoundingClientRect();
+    setIndicator({
+      left: rect.left - navRect.left,
+      width: rect.width,
+      visible: true,
+    });
+  };
+
+  // ✅ when route changes OR on first render, move underline to active item
+  useEffect(() => {
+    if (!navRef.current) return;
+    if (!activeHref) {
+      setIndicator((p) => ({ ...p, visible: false }));
+      return;
+    }
+    const activeEl = navRef.current.querySelector(`[data-href="${activeHref}"]`);
+    if (activeEl) moveIndicatorToEl(activeEl);
+  }, [activeHref]);
+
+  // ✅ on resize, re-calc underline position
+  useEffect(() => {
+    const onResize = () => {
+      if (!navRef.current || !activeHref) return;
+      const activeEl = navRef.current.querySelector(`[data-href="${activeHref}"]`);
+      if (activeEl) moveIndicatorToEl(activeEl);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [activeHref]);
+
+  // when mouse leaves nav, underline returns to active item
+  const handleNavMouseLeave = () => {
+    if (!navRef.current) return;
+    if (!activeHref) {
+      setIndicator((p) => ({ ...p, visible: false }));
+      return;
+    }
+    const activeEl = navRef.current.querySelector(`[data-href="${activeHref}"]`);
+    if (activeEl) moveIndicatorToEl(activeEl);
+  };
+
+  // ✅ Lock body scroll when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  const logoSrc = needsScrollEffect ? "/images/logo-white.svg" : "/images/logo.svg";
+
   return (
-    <header
-      className={`  top-0 z-30 transition-all duration-300 ${
-        needsScrollEffect ? "fixed left-0 right-0" : ""
-      } ${headerBg}`}
-    >
-      <div className={`mx-auto flex w-full max-w-[1200px] items-center justify-between px-6 py-8 lg:px-8 ${
-            needsScrollEffect ? "text-white" : "text-neutral-800"
-          }`}>
-        <Link href="#top" className="flex items-center gap-2">
-          <div className="flex items-center justify-center text-sm font-semibold">
-            <Image
-              src="/images/logo.svg"
-              alt="UXbodh logo"
-              width={96}
-              height={24}
-              priority
-            />
-          </div>
-        </Link>
-
-        <nav
-          className={`hidden items-center gap-8 text-sm font-medium md:flex transition-colors ${
+    <>
+      <header
+        className={`fixed left-0 right-0 top-0 z-[100] transition-all duration-300 ${headerBg} ${className}`}
+      >
+        <div
+          className={`mx-auto flex w-full max-w-[1200px] items-center justify-between px-6 py-8 lg:px-8 ${
             needsScrollEffect ? "text-white" : "text-neutral-800"
           }`}
         >
-          {navLinks.map((item) => {
-            const active = isActiveLink(item.href);
-            return (
-              <Link
-                key={item.label}
-                href={item.href}
-                className={`relative pb-1 transition-colors ${
-                  needsScrollEffect ? "hover:text-white" : "hover:text-neutral-900"
-                } ${
-                  active
-                    ? `after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:rounded-full ${
-                        needsScrollEffect
-                          ? "text-white after:bg-white"
-                          : "text-[#f74d7b] after:bg-[#f74d7b]"
-                      }`
-                    : ""
-                }`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-         
-        </nav>
+          <div className="flex items-center gap-4">
+            <button
+              type="button"
+              className={`relative h-10 w-10 items-center justify-center  md:hidden transition-colors flex z-[102] ${
+                needsScrollEffect
+                  ? "border-white/30 bg-black/20 text-white"
+                  : isTransparent
+                  ? "border-white/30 bg-black/40 text-white"
+                  : "border-neutral-300 bg-white text-neutral-800"
+              }`}
+              onClick={() => setMenuOpen((prev) => !prev)}
+              aria-label="Toggle navigation menu"
+            >
+              <span className="sr-only">Menu</span>
+              <div className="space-y-1.5">
+                <span
+                  className={`block h-0.5 w-6 transition-all duration-300 ${
+                    needsScrollEffect || isTransparent ? "bg-white" : "bg-neutral-800"
+                  } ${menuOpen ? "translate-y-2 rotate-45" : ""}`}
+                />
+                <span
+                  className={`block h-0.5 w-6 transition-all duration-300 ${
+                    needsScrollEffect || isTransparent ? "bg-white" : "bg-neutral-800"
+                  } ${menuOpen ? "opacity-0" : ""}`}
+                />
+                <span
+                  className={`block h-0.5 w-6 transition-all duration-300 ${
+                    needsScrollEffect || isTransparent ? "bg-white" : "bg-neutral-800"
+                  } ${menuOpen ? "-translate-y-2 -rotate-45" : ""}`}
+                />
+              </div>
+            </button>
 
-        <button
-          type="button"
-          className={`relative z-20 flex h-10 w-10 items-center justify-center rounded-[10px] border shadow-sm md:hidden transition-colors ${
-            needsScrollEffect
-              ? "border-white/30 bg-black/20 text-white"
-              : isTransparent
-              ? "border-white/30 bg-black/40 text-white"
-              : "border-neutral-300 bg-white text-neutral-800"
-          }`}
-          onClick={() => setOpen((prev) => !prev)}
-          aria-label="Toggle navigation menu"
-        >
-          <span className="sr-only">Menu</span>
-          <div className="space-y-1.5">
-            <span
-              className={`block h-0.5 w-6 transition ${
-                needsScrollEffect ? "bg-white" : isTransparent ? "bg-white" : "bg-neutral-800"
-              } ${open ? "translate-y-2 rotate-45" : ""}`}
-            />
-            <span
-              className={`block h-0.5 w-6 transition ${
-                needsScrollEffect ? "bg-white" : isTransparent ? "bg-white" : "bg-neutral-800"
-              } ${open ? "opacity-0" : ""}`}
-            />
-            <span
-              className={`block h-0.5 w-6 transition ${
-                needsScrollEffect ? "bg-white" : isTransparent ? "bg-white" : "bg-neutral-800"
-              } ${open ? "-translate-y-2 -rotate-45" : ""}`}
-            />
+            <Link href="/" className="flex items-center gap-2 z-[102]">
+
+              <Image
+                src={logoSrc}
+                alt="UXbodh logo"
+                width={96}
+                height={24}
+                priority
+              />
+            </Link>
           </div>
-        </button>
-      </div>
 
-      {open && (
-        <div className="mx-auto block w-full max-w-[1200px] px-6 pb-4 md:hidden">
-          <div
-            className={`rounded-2xl border shadow-lg transition-colors ${
-              isPink
-                ? "border-white/20 bg-[#f74d7b]"
-                : isTransparent
-                ? "border-white/15 bg-black/80"
-                : "border-neutral-200 bg-white"
+          {/* ✅ Desktop nav with sliding underline */}
+          <nav
+            ref={navRef}
+            onMouseLeave={handleNavMouseLeave}
+            className={`relative hidden items-center gap-8 text-sm font-medium md:flex ${
+              needsScrollEffect ? "text-white" : "text-neutral-800"
             }`}
           >
-            <div
-              className={`flex flex-col divide-y ${
-                isPink || isTransparent
-                  ? "divide-white/10 text-neutral-50"
-                  : "divide-neutral-100"
+            {/* sliding underline */}
+            <span
+              aria-hidden
+              className={`absolute -bottom-[6px] h-[2px] rounded-full transition-all duration-300 ease-out ${
+                indicator.visible ? "opacity-100" : "opacity-0"
               }`}
-            >
-              {navLinks.map((item) => (
+              style={{
+                left: indicator.left,
+                width: indicator.width,
+                backgroundColor: "#EA3B67",
+              }}
+            />
+
+            {navLinks.map((item) => {
+              const active = isActiveLink(item.href);
+              return (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`px-5 py-3 text-sm font-medium transition ${
-                    isPink || isTransparent
-                      ? "hover:bg-white/5"
-                      : "text-neutral-800 hover:bg-neutral-50"
-                  } ${
-                    isActiveLink(item.href)
-                      ? isPink || isTransparent
-                        ? "text-white"
-                        : "text-[#f74d7b]"
-                      : ""
+                  data-href={item.href}
+                  onMouseEnter={(e) => moveIndicatorToEl(e.currentTarget)}
+                  className={`relative inline-flex pb-1 transition-colors hover:text-[#EA3B67] ${
+                    active ? "text-[#EA3B67]" : ""
                   }`}
-                  onClick={() => setOpen(false)}
                 >
                   {item.label}
                 </Link>
-              ))}
+              );
+            })}
+          </nav>
+        </div>
+      </header>
+
+      {/* ✅ Mobile Menu - Left to Right Animation with Close Button & Logo */}
+      <div
+        className={`fixed inset-0 z-[101] md:hidden transition-opacity duration-300 ${
+          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        {/* Black Backdrop Overlay */}
+        <div
+          className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+          onClick={() => setMenuOpen(false)}
+          aria-hidden
+        />
+        
+        {/* White Menu Panel - slides from left to right */}
+        <div
+          className={`absolute left-0 top-0 h-full w-[86%] max-w-[320px] bg-white shadow-[0_36px_120px_-36px_rgba(0,0,0,0.35)] transform transition-transform duration-500 ease-in-out ${
+            menuOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
+        >
+          {/* Menu Content */}
+          <div className="flex flex-col h-full">
+            {/* Header with Logo and Close Button */}
+            <div className="flex items-center justify-between px-6 py-6 border-b border-neutral-100">
+              <Link href="/" onClick={() => setMenuOpen(false)}>
+                <Image
+                  src={logoSrc}
+                  alt="UXbodh logo"
+                  width={96}
+                  height={24}
+                  priority
+                />
+              </Link>
+              
+              {/* Close Button */}
               <button
                 type="button"
-                className={`px-5 py-4 text-center text-sm font-semibold transition rounded-[10px] ${
-                  isPink || isTransparent
-                    ? "text-white hover:bg-white/10"
-                    : "text-[#f74d7b] hover:bg-neutral-50"
-                }`}
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-neutral-100 transition-colors"
+                aria-label="Close menu"
+              >
+                <svg
+                  className="w-5 h-5 text-neutral-800"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+
+            {/* Navigation Links */}
+            <div className="flex-1 px-6 py-8 space-y-2 overflow-y-auto">
+              {navLinks.map((item, index) => {
+                const active = isActiveLink(item.href);
+                return (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className={`flex items-center gap-3 px-3 py-3 rounded-lg text-base font-medium transition-all duration-200 ${
+                      active 
+                        ? "text-[#EA3B67] bg-[#EA3B67]/5" 
+                        : "text-neutral-800 hover:bg-neutral-50 hover:text-[#EA3B67]"
+                    }`}
+                    onClick={() => setMenuOpen(false)}
+                    style={{
+                      animation: menuOpen ? `slideIn 0.3s ease-out ${index * 0.1}s both` : 'none'
+                    }}
+                  >
+                    <span
+                      className={`h-5 w-[3px] rounded-full transition-all ${
+                        active ? "bg-[#EA3B67]" : "bg-transparent"
+                      }`}
+                    />
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* CTA Button at bottom */}
+            <div className="px-6 py-6 border-t border-neutral-100">
+              <button
+                type="button"
+                className="w-full rounded-lg bg-black px-5 py-3 text-sm font-semibold text-white transition-all hover:bg-neutral-800 hover:scale-[1.02] active:scale-[0.98]"
                 onClick={() => {
-                  setOpen(false);
+                  setMenuOpen(false);
                   onOpenCTA?.();
                 }}
               >
@@ -188,7 +330,21 @@ export default function Header({
             </div>
           </div>
         </div>
-      )}
-    </header>
+      </div>
+
+      {/* ✅ Add keyframe animation */}
+      <style jsx>{`
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+      `}</style>
+    </>
   );
 }

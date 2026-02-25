@@ -18,14 +18,14 @@ export default function AuditSection() {
     return (
         <section
             id="about"
-            className="bg-white px-6 text-center py-24 text-neutral-900 lg:px-8"
+            className="bg-white px-6 text-center py-16 text-black lg:px-8 lg:py-[130px]"
         >
             <div className="mx-auto w-full max-w-[1085px]">
                 <div className="mx-auto max-w-4xl flex-row">
-                    <h2 className="text-3xl font-semibold sm:text-4xl">
+                    <h2 className="text-3xl md:text-5xl font-semibold text-black mb-8">
                         Comprehensive website/App audits
                     </h2>
-                    <p className="mt-4 text-base text-neutral-600 sm:text-lg">
+                    <p className="mt-4 text-base text-black sm:text-lg">
                         We evaluate every key aspect of your website—usability,
                         accessibility, and performance—to identify friction
                         points stopping users from converting.
@@ -36,12 +36,12 @@ export default function AuditSection() {
                     {Audits.map((audit) => (
                         <div
                             key={audit.title}
-                            className="group relative flex h-full flex-col rounded-[20px] border border-black bg-white px-10 pt-12 pb-7 text-left  transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_22px_40px_-20px_rgba(0,0,0,0.25)] cursor-pointer"
+                            className="group relative flex h-full flex-col rounded-[20px] border border-black bg-white px-6 py-8 text-left transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_22px_40px_-20px_rgba(0,0,0,0.25)] cursor-pointer sm:px-10 sm:py-10"
                         >
                             {/* subtle glow frame */}
                             <div className="pointer-events-none absolute inset-0 -z-10 rounded-[24px] opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-100 gap-6 " />
 
-                            <div className="flex flex-col items-left  text-neutral-900 gap-8">
+                            <div className="flex flex-col items-left  text-black gap-8">
                                 <div className="flex h-12 w-12 items-center justify-center rounded-xl  text-white transition-all duration-300">
                                     {audit.icon}
                                 </div>
@@ -51,7 +51,7 @@ export default function AuditSection() {
                                 </h3>
                             </div>
 
-                            <p className="text-sm leading-6 text-neutral-700 mt-4 mb-7">
+                            <p className="text-sm leading-6 text-black mt-4 mb-7">
                                 {audit.description}
                             </p>
 
@@ -59,7 +59,7 @@ export default function AuditSection() {
                                 {audit.points.map((point) => (
                                     <li
                                         key={point}
-                                        className="flex items-start text-sm pb-3 text-neutral-900 gap-[10px] font-semibold"
+                                        className="flex items-start text-sm pb-3 text-black gap-[10px] font-medium"
                                     >
                                         <span className="mt-0.5 inline-block">
                                             <Check />

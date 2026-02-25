@@ -17,7 +17,7 @@ export default function DesignsHero() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto w-full max-w-5xl text-center">
-        <h1 className="mb-3 text-5xl font-bold leading-[1.1] tracking-tight sm:mb-4 sm:text-6xl lg:text-7xl">
+        <h1 className="mb-3 text-2xl font-bold leading-[1.1] tracking-tight sm:mb-4 sm:text-6xl lg:text-7xl">
           <span className="bg-gradient-to-r from-[#e64169] via-[#f8843f] to-[#f3d461] bg-clip-text text-transparent">
             Our designs
           </span>

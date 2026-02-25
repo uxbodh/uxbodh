@@ -104,12 +104,11 @@ export default function FAQAccordion() {
 
 
   return (
-    <section id="faq" className="bg-white px-6 py-24">
+    <section id="faq" className="bg-white px-6 py-16 sm:py-24">
       <div className="mx-auto w-full max-w-[740px]">
         <div className="mx-auto max-w-[900px] text-center">
-         
-          <h2 className="text-5xl font-bold tracking-tight text-black sm:text-[48px]">
-            Trusted by leaders
+          <h2 className="text-4xl sm:text-5xl font-semibold text-black mb-8">
+           No dumb questions
           </h2>
         </div>
 
@@ -124,7 +123,7 @@ export default function FAQAccordion() {
                   onClick={() => toggle(index)}
                   aria-expanded={isOpen}
                 >
-                  <span className="text-xl font-semibold text-[#000000]">
+                  <span className="text-lg lg:text-xl font-medium text-[#000000]">
                     {faq.question}
                   </span>
 
@@ -145,7 +144,7 @@ export default function FAQAccordion() {
                     isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <div className="mt-2 w-[80%] text-[14px] leading-[1.65] text-[#000000] pb-2">
+                  <div className="mt-2 w-full text-[14px] leading-[1.65] text-[#000000] pb-2 sm:max-w-[720px]">
                     {faq.answer}
                   </div>
                 </div>
@@ -178,4 +177,3 @@ function ArrowDownIcon() {
     </svg>
   );
 }
-

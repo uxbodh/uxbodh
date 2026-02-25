@@ -27,7 +27,7 @@ export const designs = [
     title: "Smart Finance",
     description:
       "A modern finance dashboard with clear hierarchy, actionable insights, and frictionless task flows.",
-    image: "/process.svg",
+    image: "/images/pocket-free.png",
   },
   {
     id: "customer-support",

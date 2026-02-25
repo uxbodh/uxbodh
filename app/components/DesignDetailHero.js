@@ -18,7 +18,7 @@ export default function DesignDetailHero({ title, description, image }) {
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
 
       {/* Content Container */}
-      <div className="relative z-10 mx-auto w-full max-w-[1200px]">
+      <div className="relative z-10 mx-auto w-full max-w-[1200px] pt-[114px]">
         <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
           {/* Left Column - Text Content */}
           <div className="flex flex-col justify-center space-y-4 sm:space-y-5 lg:space-y-6">
