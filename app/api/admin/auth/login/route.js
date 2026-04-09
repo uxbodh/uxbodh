@@ -62,7 +62,6 @@ export async function POST(req) {
             sameSite: "lax",
             maxAge: 60 * 60 * 24 * 7,
             path: "/",
-            domain: ".vercel.app", // 🔥 MUST ADD
         });
 
         // response.cookies.set("token", token, {
