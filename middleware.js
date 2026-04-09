@@ -1,31 +1,43 @@
-// middleware.js
 import { NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 
-const SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
-
 export async function middleware(req) {
-    const pathname = req.nextUrl.pathname;
+    const { pathname } = req.nextUrl;
 
     console.log("🔥 MIDDLEWARE RUNNING:", pathname);
 
-    const cookieStore = req.cookies;
-    const token = cookieStore.get("token")?.value;
+    if (
+        !pathname.startsWith("/admin") &&
+        !pathname.startsWith("/dashboard")
+    ) {
+        return NextResponse.next();
+    }
 
-    console.log("🍪 All cookies:", cookieStore.getAll());
-    console.log("🔐 Token value:", token);
+    // ✅ READ ENV INSIDE FUNCTION
+    const jwtSecret = process.env.JWT_SECRET;
+
+    console.log("🔑 JWT_SECRET length:", jwtSecret?.length);
+
+    if (!jwtSecret) {
+        console.error("❌ JWT_SECRET is missing");
+        return NextResponse.redirect(new URL("/login", req.url));
+    }
+
+    const SECRET = new TextEncoder().encode(jwtSecret);
+
+    const token = req.cookies.get("token")?.value;
+    console.log("🍪 Token exists:", !!token);
 
     if (!token) {
-        console.log("❌ No token → redirect");
         return NextResponse.redirect(new URL("/login", req.url));
     }
 
     try {
-        const payload = await jwtVerify(token, SECRET);
-        console.log("✅ Token verified:", payload.payload);
+        await jwtVerify(token, SECRET);
+        console.log("✅ Token verified");
         return NextResponse.next();
     } catch (err) {
-        console.log("❌ Token invalid:", err.message);
+        console.error("❌ Token invalid:", err.message);
         const res = NextResponse.redirect(new URL("/login", req.url));
         res.cookies.delete("token");
         return res;
@@ -33,5 +45,5 @@ export async function middleware(req) {
 }
 
 export const config = {
-    matcher: ["/dashboard", "/dashboard/:path*", "/admin", "/admin/:path*"],
+    matcher: ["/admin/:path*", "/dashboard/:path*"],
 };
