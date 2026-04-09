@@ -56,21 +56,21 @@ export async function POST(req) {
 
         // PRODUCTION COMPATIBLE
 
-        // response.cookies.set("token", token, {
-        //     httpOnly: true,
-        //     secure: process.env.NODE_ENV === "production",
-        //     sameSite: "strict",
-        //     maxAge: 60 * 60 * 24 * 7,
-        //     path: "/"
-        // });
-
         response.cookies.set("token", token, {
             httpOnly: true,
-            secure: false, // ❗ localhost
-            sameSite: "lax", // ❗ MUST
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "strict",
             maxAge: 60 * 60 * 24 * 7,
-            path: "/",
+            path: "/"
         });
+
+        // response.cookies.set("token", token, {
+        //     httpOnly: true,
+        //     secure: false, // ❗ localhost
+        //     sameSite: "lax", // ❗ MUST
+        //     maxAge: 60 * 60 * 24 * 7,
+        //     path: "/",
+        // });
 
         return response;
     } catch (error) {
