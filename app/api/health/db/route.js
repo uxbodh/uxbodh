@@ -1,8 +1,8 @@
-import { connectDB } from "@/app/lib/mongodb";
+import { dbConnect } from "@/app/lib/dbConnect";
 
 export async function GET() {
     try {
-        await connectDB();
+        await dbConnect();
         return Response.json({
             status: "ok",
             database: "connected",
