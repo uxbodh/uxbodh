@@ -35,7 +35,7 @@ export async function POST(req) {
                 { status: 403 },
             );
         }
-        
+
         const isMatch = await bcrypt.compare(password, user.password);
 
         if (!isMatch) {
@@ -58,10 +58,10 @@ export async function POST(req) {
 
         response.cookies.set("token", token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "strict",
+            secure: true, // Vercel requires this
+            sameSite: "lax", // ✅ FIX HERE
             maxAge: 60 * 60 * 24 * 7,
-            path: "/"
+            path: "/",
         });
 
         // response.cookies.set("token", token, {
