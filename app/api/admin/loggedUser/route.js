@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 
 export async function GET(req) {
     try {
-        const token = req.cookies.get("token")?.value;
+        const token = cookies().get("token")?.value;
 
         if (!token) {
             return NextResponse.json(

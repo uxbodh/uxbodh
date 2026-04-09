@@ -13,7 +13,7 @@ export async function middleware(req) {
         return NextResponse.next();
     }
 
-    const token = req.cookies.get("token")?.value;
+    const token = cookies().get("token")?.value;
 
     if (!token) {
         return NextResponse.redirect(new URL("/login", req.url));

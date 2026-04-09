@@ -58,10 +58,11 @@ export async function POST(req) {
 
         response.cookies.set("token", token, {
             httpOnly: true,
-            secure: true, // Vercel requires this
-            sameSite: "lax", // ✅ FIX HERE
+            secure: true,
+            sameSite: "lax",
             maxAge: 60 * 60 * 24 * 7,
             path: "/",
+            domain: ".vercel.app", // 🔥 MUST ADD
         });
 
         // response.cookies.set("token", token, {
