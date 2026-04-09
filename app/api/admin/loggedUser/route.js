@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
-import { cookies } from "next/headers";
 
-export async function GET() {
+export async function GET(req) {
     try {
-        const cookieStore = cookies(); // ✅ FIX
-        const token = cookieStore.get("token")?.value;
+        // ✅ Correct way in route handlers
+        const token = req.cookies.get("token")?.value;
 
         if (!token) {
             return NextResponse.json(
@@ -29,6 +28,7 @@ export async function GET() {
             success: true,
             user: decoded,
         });
+
     } catch (err) {
         console.error("Token verification error:", err.message);
 
