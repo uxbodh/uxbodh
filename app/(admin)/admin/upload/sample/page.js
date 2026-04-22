@@ -34,7 +34,6 @@ const SampleImageList = () => {
     const [records, setRecords] = useState(null);
 
     const getFormData = (data) => {
-        console.log("data", data);
         setFormData(data);
         if (data?.success) {
             setIsModalOpen(false);
@@ -62,7 +61,6 @@ const SampleImageList = () => {
 
     const handleStatusChange = async (record) => {
         setLoading(true);
-        console.log("record", record);
         let response = await updateSampleImageStatus({
             id: record?._id,
             status: record?.status,

@@ -42,7 +42,6 @@ const DesignPageImageList = () => {
     };
 
     const getFormData = (data) => {
-        console.log("data", data);
         setFormData(data);
         if (data?.success) {
             setIsModalOpen(false);
@@ -84,7 +83,6 @@ const DesignPageImageList = () => {
 
     const handleStatusChange = async (record) => {
         setLoading(true);
-        console.log("record", record);
         let response = await updateDesignPageStatus({
             id: record?._id,
             status: record?.status,

@@ -82,10 +82,14 @@ const AddDesignImage = ({ getFormData, editRecord }) => {
             if (resDesignPage?.data?.success) {
                 messageApi.success(resDesignPage?.data?.message);
                 isDesignPageSuccess = true;
+            } else {
+                messageApi.error(resDesignPage?.data?.message);
             }
             if (resDesignDetailPage?.data?.success) {
                 messageApi.success(resDesignDetailPage?.data?.message);
                 isDesignDetailPageSuccess = true;
+            } else {
+                messageApi.error(resDesignDetailPage?.data?.message);
             }
             if (isDesignPageSuccess && isDesignDetailPageSuccess) {
                 setFormDataFunction({ success: true });
