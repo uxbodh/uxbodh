@@ -14,7 +14,6 @@ const LoginForm = ({ getFormData }) => {
     };
 
     const onFinish = async(values) => {
-        console.log("Received values of form: ", values);
         let payload = {
             userName: values?.userName,
             password: values?.password

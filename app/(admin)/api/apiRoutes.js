@@ -86,3 +86,72 @@ export const deleteSampleImageUpload = ({params, id}) => {
         }
     );
 };
+
+export const getDesignPageList = () => {
+    return apiRequest(
+        {
+            url: `/api/admin/design/list`,
+            type: "GET",
+        }
+    );
+};
+
+export const createDesignPage = (params) => {
+    return apiRequest(
+        {
+            url: `/api/admin/design/design-page/create`,
+            type: "POST",
+            params
+        }
+    );
+};
+
+export const createDesignDetailPage = (params) => {
+    return apiRequest(
+        {
+            url: `/api/admin/design/design-detail-page/create`,
+            type: "POST",
+            params
+        }
+    );
+};
+
+export const updateDesignPageStatus = ({params, id}) => {
+    return apiRequest(
+        {
+            url: `/api/admin/design/status/${id}`,
+            type: "PATCH",
+            params
+        }
+    );
+};
+
+export const updateDesignPage = (params, id) => {
+
+    return apiRequest(
+        {
+            url: `/api/admin/design/design-page/edit/${id}`,
+            type: "PUT",
+            params
+        }
+    );
+};
+
+export const updateDesignDetailPage = (params, id) => {
+    return apiRequest(
+        {
+            url: `/api/admin/design/design-detail-page/edit/${id}`,
+            type: "PUT",
+            params
+        }
+    );
+};
+
+export const deleteDesignPage = ({params, id}) => {
+    return apiRequest(
+        {
+            url: `/api/admin/design/design-page/delete/${id}`,
+            type: "DELETE",
+        }
+    );
+};

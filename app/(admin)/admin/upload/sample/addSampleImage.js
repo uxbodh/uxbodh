@@ -10,7 +10,7 @@ import {
     message,
     Space,
 } from "antd";
-import { CheckCircleOutlined, MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { useEffect, useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import {
@@ -26,7 +26,6 @@ const AddSampleImage = ({ getFormData, editRecord }) => {
     const [imageFileList, setImageFileList] = useState([]);
     const [messageApi, contextHolder] = message.useMessage();
 
-    console.log("editRecord", editRecord);
     const isEdit = !!editRecord?._id;
 
     const setFormDataFunction = (data) => {
@@ -34,7 +33,6 @@ const AddSampleImage = ({ getFormData, editRecord }) => {
     };
 
     const onFinish = async (values) => {
-        console.log("Form Values:", values);
         let payload = {
             thumbnail: values?.thumbnail,
             image: values?.image,
@@ -42,7 +40,6 @@ const AddSampleImage = ({ getFormData, editRecord }) => {
             content: values?.content,
             markerPostion: values?.markerPostion,
         };
-        console.log("payload", payload);
 
         let response = null;
 

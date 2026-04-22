@@ -10,7 +10,6 @@ const LoginPage = () => {
     const [formData, setFormData] = useState(null);
     
     const getFormData = (data) => {
-        console.log('data?.success',data)
         setFormData(data);
         if(data?.success) {
             router.push("/dashboard");

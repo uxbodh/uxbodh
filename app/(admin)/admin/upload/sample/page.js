@@ -71,6 +71,8 @@ const SampleImageList = () => {
             if (response?.data?.success) {
                 messageApi.success(response?.data?.message);
                 fetchSampleImageData();
+            } else {
+                messageApi.error(response?.data?.message);
             }
         } catch (err) {
             messageApi.error(err.message);
@@ -85,6 +87,8 @@ const SampleImageList = () => {
             if (response?.data?.success) {
                 messageApi.success(response?.data?.message);
                 fetchSampleImageData();
+            } else {
+                messageApi.error(response?.data?.message);
             }
         } catch (err) {
             messageApi.error(err.message);

@@ -4,7 +4,16 @@ export const runtime = "nodejs";
 export async function POST(req) {
     try {
         const formData = await req.formData();
-        const file = formData.get("thumbnail") || formData.get("image");
+
+        let file = null;
+
+        for (const value of formData.values()) {
+            if (value instanceof File) {
+                file = value;
+                break;
+            }
+        }
+
         const folder = formData.get("folder");
         // expected: blog | homepage-slider | design
 
