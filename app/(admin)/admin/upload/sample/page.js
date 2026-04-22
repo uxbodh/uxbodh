@@ -8,10 +8,10 @@ import {
 } from "../../../api/apiRoutes";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
-const baseUrl =
-    typeof window !== "undefined"
-        ? window.location.origin
-        : "https://uxbodh.com";
+// const baseUrl =
+//     typeof window !== "undefined"
+//         ? window.location.origin
+//         : "https://uxbodh.com";
 
 const {
     Card,
@@ -98,7 +98,7 @@ const SampleImageList = () => {
             dataIndex: "thumbnail",
             key: "thumbnail",
             render: (url) => (
-                <img src={baseUrl + url} alt="thumb" style={{ width: 80 }} />
+                <img src={url} alt="thumb" style={{ width: 80 }} />
             ),
             width: 120,
         },
@@ -107,7 +107,7 @@ const SampleImageList = () => {
             dataIndex: "image",
             key: "image",
             render: (url) => (
-                <img src={baseUrl + url} alt="thumb" style={{ width: 80 }} />
+                <img src={url} alt="thumb" style={{ width: 80 }} />
             ),
             width: 120,
         },
