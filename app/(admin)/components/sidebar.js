@@ -70,7 +70,12 @@ const AdminSidebar = ({ collapsed }) => {
                         {
                             key: "/admin/upload/sample",
                             icon: <UploadOutlined />,
-                            label: "Sample Image",
+                            label: "Slider Image",
+                        },
+                        {
+                            key: "/admin/upload/design",
+                            icon: <UploadOutlined />,
+                            label: "Design Page",
                         },
                     ]}
                 />

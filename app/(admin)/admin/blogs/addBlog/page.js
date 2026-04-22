@@ -33,7 +33,6 @@ const AddBlog = () => {
     const [messageApi, contextHolder] = message.useMessage();
 
     const onFinish = (values) => {
-        console.log("Form Values:", values);
         setFormData(values);
         let payload = {
             seoTitle: values?.seoTitle,
@@ -43,7 +42,6 @@ const AddBlog = () => {
             content: values?.content,
             blogImage: values?.blogImage,
         }
-        console.log('payload',payload)
         messageApi.success("Blog data captured successfully");
     };
 

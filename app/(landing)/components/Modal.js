@@ -5,7 +5,6 @@ const Modal = (props) => {
     const { isOpen, onClose, title, width, height, className, children, borderRadius } = props;
     
     const handleClose = () => {
-        console.log('close')
         onClose(false);
     };
 

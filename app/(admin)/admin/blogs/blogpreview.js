@@ -8,12 +8,10 @@ import { useUser } from "@/app/context/userContext";
 import dayjs from "dayjs";
 
 const BlogPreview = ({ data }) => {
-    console.log("data", data);
     const [content, setContent] = useState("");
 
     const { user, loading } = useUser();
 
-    console.log("user", user);
     if (loading) return null;
 
     useEffect(() => {

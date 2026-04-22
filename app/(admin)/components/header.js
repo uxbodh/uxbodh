@@ -19,8 +19,6 @@ const AdminHeader = ({ collapsed, setCollapsed }) => {
 
     if (loading) return null;
 
-    console.log('user',user)
-
     return (
         <>
             <Header style={{ padding: 0, background: colorBgContainer }}>

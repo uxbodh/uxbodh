@@ -1,13 +1,14 @@
-// app/api/admin/sampleUpload/edit/[id]/route.js
 import { dbConnect } from "@/app/lib/dbConnect";
-import SampleUpload from "@/app/models/SampleUploads";
+import designPage from "@/app/models/DesignPage";
 import { NextResponse } from "next/server";
 
-export async function PATCH(req, { params }) {
+export async function PATCH(req, context) {
     try {
         await dbConnect();
 
-        const { id } = await params;
+        // Unwrap params
+        const params = await context.params;
+        const { id } = params;
 
         if (!id) {
             return NextResponse.json(
@@ -16,23 +17,23 @@ export async function PATCH(req, { params }) {
             );
         }
 
-        const body = await req.json();
-
-        const updatedRecord = await SampleUpload.findByIdAndUpdate(id, body, {
-            new: true,
-        });
-
-        if (!updatedRecord) {
+        // Find current record
+        const record = await designPage.findById(id);
+        if (!record) {
             return NextResponse.json(
                 { success: false, message: "Record not found" },
                 { status: 404 },
             );
         }
 
+        // Toggle the status
+        record.status = !record.status;
+        await record.save();
+
         return NextResponse.json({
             success: true,
-            message: "Sample updated successfully",
-            data: updatedRecord,
+            message: `Status updated to ${record.status ? "Active" : "Inactive"}`,
+            updated: record,
         });
     } catch (err) {
         return NextResponse.json(
