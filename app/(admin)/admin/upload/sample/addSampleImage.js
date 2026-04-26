@@ -59,6 +59,8 @@ const AddSampleImage = ({ getFormData, editRecord }) => {
                 form.resetFields();
                 setThumbFileList([]);
                 setImageFileList([]);
+            } else {
+                messageApi.error(response?.data?.message);
             }
         } catch (error) {
             console.log(error);

@@ -145,6 +145,7 @@ const AddBlog = () => {
                                 listType="picture"
                                 maxCount={1}
                                 action="/api/admin/uploadImage"
+                                folder="blog"
                                 onChange={(info) => {
                                     if (info?.file?.status === "done") {
                                         if (info?.file?.response?.success) {
