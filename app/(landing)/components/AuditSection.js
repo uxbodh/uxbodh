@@ -18,12 +18,12 @@ export default function AuditSection() {
     return (
         <section
             id="about"
-            className="bg-white px-6 text-center py-16 text-black lg:px-8 lg:py-[130px]"
+            className="bg-white px-6 text-center py-16 text-black lg:px-8 lg:py-[110px]"
         >
             <div className="mx-auto w-full max-w-[1085px]">
                 <div className="mx-auto max-w-4xl flex-row">
-                    <h2 className="text-3xl md:text-5xl font-semibold text-black mb-8">
-                        Comprehensive website/App audits
+                    <h2 className="text-3xl md:text-5xl font-semibold text-black mb-8 leading70">
+                        Comprehensive <br/> website/App audits
                     </h2>
                     <p className="mt-4 text-base text-black sm:text-lg">
                         We evaluate every key aspect of your website—usability,

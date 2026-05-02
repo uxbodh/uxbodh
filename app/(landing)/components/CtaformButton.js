@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 
 /* ------------ Floating text input ------------ */
 
@@ -31,6 +32,7 @@ const FloatingInput = ({ label, type = "text" }) => {
           text-black
           outline-none
           focus:border-[#9CA3AF]
+          font-medium
         "
       />
       <span
@@ -221,15 +223,19 @@ const CTAFormModal = ({ onClose }) => {
             />
             <div className="absolute inset-0 bg-black/40" />
 
-            <ul className="absolute top-10 left-7 right-6 space-y-4 text-[15px] text-white leading-snug">
+            <ul className="absolute top-10 left-7 right-6 text-[15px] text-white leading-snug">
               {[
                 "Find Hidden Usability Issues",
                 "Improve Conversions & Sales",
                 "Enhance User Satisfaction",
                 "Save Time & Cost in Future Development",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-2">
-                  <span className="mt-[2px] text-lg">✓</span>
+                <li key={item} className="flex items-start mb-7 gap-2 items-baseline">
+                  <span className="mt-[2px] text-lg">
+                    <Image src="/images/tick.png" width={12} height={8}>
+
+                    </Image>
+                  </span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -237,8 +243,8 @@ const CTAFormModal = ({ onClose }) => {
           </div>
 
           {/* RIGHT SIDE (form) */}
-          <div className="px-10 py-8 flex flex-col">
-            <h2 className="text-[28px] leading-tight font-bold mb-5">
+          <div className="pad-70 py-8 flex flex-col">
+            <h2 className="text-[28px] leading-tight font-w600 mb-5">
               Get start here
             </h2>
 

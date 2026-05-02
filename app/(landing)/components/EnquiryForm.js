@@ -50,8 +50,8 @@ const EnquiryForm = () => {
                 </div>
 
                 {/* RIGHT SIDE (form) */}
-                <div className="px-10 py-8 flex flex-col">
-                    <h2 className="text-[28px] leading-tight font-bold mb-5">
+                <div className="pad-70 py-8 flex flex-col">
+                    <h2 className="text-[28px] leading-tight font-medium mb-5">
                         Get start here
                     </h2>
 

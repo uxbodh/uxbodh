@@ -119,11 +119,11 @@ export default function FAQAccordion() {
             return (
               <div key={faq.question} className="py-6">
                 <button
-                  className="flex w-full items-center justify-between py-2 text-left"
+                  className="flex w-full text-[20px] items-center justify-between py-2 text-left"
                   onClick={() => toggle(index)}
                   aria-expanded={isOpen}
                 >
-                  <span className="text-lg lg:text-xl font-medium text-[#000000]">
+                  <span className="text-lg lg:text-xl text-[#000000]">
                     {faq.question}
                   </span>
 

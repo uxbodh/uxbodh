@@ -71,7 +71,7 @@ export default function TestimonialsSlider() {
       <div className="relative mx-auto mt-14 flex max-w-[1200px] items-center justify-center">
         <button
           onClick={handlePrev}
-          className="absolute left-[-18px] lg:left-[-32px] top-1/2 z-10 -translate-y-1/2 flex h-[42px] w-[42px] items-center justify-center rounded-full bg-white text-neutral-800 shadow-[0_10px_28px_-16px_rgba(0,0,0,0.35)] ring-1 ring-neutral-200 transition hover:bg-gray-100 sm:left-[-46px]"
+          className="absolute left-[-18px] lg:left-[0px] top-1/2 z-10 -translate-y-1/2 flex h-[42px] w-[42px] items-center justify-center rounded-full bg-white text-neutral-800 shadow-[0_10px_28px_-16px_rgba(0,0,0,0.35)] ring-1 ring-neutral-200 transition hover:bg-gray-100 sm:left-[-46px]"
           aria-label="Previous testimonial"
         >
           <ArrowLeft />
@@ -84,18 +84,18 @@ export default function TestimonialsSlider() {
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#5f4b8b]">
                   <Image src="/triangle-icon.svg" alt="icon" width={18} height={18} />
                 </span>
-                <span className="text-[20px] font-semibold uppercase tracking-tight text-black">
+                <span className="text-[22px] font-semibold uppercase tracking-tight text-black">
                   {testimonials[current].company}
                 </span>
               </div>
-              <p className="max-w-xl text-base leading-[1.65] text-[#3a3a3a]">
+              <p className="max-w-xl leading-[1.65] text-[#3a3a3a] text-[22px]">
                 {testimonials[current].quote}
               </p>
               <div className="pt-2">
-                <p className="text-[15px] font-semibold text-black">
+                <p className="text-[16px] font-semibold text-black">
                   {testimonials[current].name}
                 </p>
-                <p className="text-[13px] text-neutral-500">{testimonials[current].role}</p>
+                <p className="text-[14px] mt-1 text-neutral-500">{testimonials[current].role}</p>
               </div>
             </div>
 
@@ -117,7 +117,7 @@ export default function TestimonialsSlider() {
 
         <button
           onClick={handleNext}
-          className="absolute right-[-18px] lg:right-[-32px] top-1/2 z-10 -translate-y-1/2 flex h-[42px] w-[42px] items-center justify-center rounded-full bg-white text-neutral-800 shadow-[0_10px_28px_-16px_rgba(0,0,0,0.35)] ring-1 ring-neutral-200 transition hover:bg-gray-100 sm:right-[-46px]"
+          className="absolute right-[-18px] lg:right-[0px] top-1/2 z-10 -translate-y-1/2 flex h-[42px] w-[42px] items-center justify-center rounded-full bg-white text-neutral-800 shadow-[0_10px_28px_-16px_rgba(0,0,0,0.35)] ring-1 ring-neutral-200 transition hover:bg-gray-100 sm:right-[-46px]"
           aria-label="Next testimonial"
         >
           <ArrowRight />

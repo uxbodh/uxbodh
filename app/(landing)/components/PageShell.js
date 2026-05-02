@@ -13,7 +13,7 @@ export default function PageShell({ children, withCTA = false }) {
   const isDesignSection = pathname?.startsWith("/designs") ?? false;
   const mainClassName = isDesignSection
     ? "flex-1"
-    : "flex-1 pt-[102px]";
+    : "flex-1 pt-[120px]";
 
   useEffect(() => {
     const segments = pathname?.split("/").filter(Boolean) || [];
