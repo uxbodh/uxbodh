@@ -26,7 +26,7 @@ export default function Home() {
             <ProcessSection />
             <TestimonialsSlider />
             <FAQAccordion />
-            <RelaxHero />
+            <RelaxHero relaxImg={true} />
         </PageShell>
     );
 }

@@ -161,5 +161,5 @@ function FeatureList() {
 }
 
 function BottomCta() {
-  return <RelaxHero bgClass="bg-[#f9f5f5]" />;
+  return <RelaxHero bgClass="bg-[#f9f5f5]" relaxImg={false} />;
 }
