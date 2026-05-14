@@ -15,13 +15,13 @@ const BlogPreview = ({ data }) => {
     if (loading) return null;
 
     useEffect(() => {
-        const clean = sanitizeHtml(data?.content || "");
+        const clean = sanitizeHtml(data?.blogContent || "");
         setContent(clean);
     }, [data]);
 
     const readingTime = getReadingTime(content);
 
-    const imageUrl = data?.blogImage?.[0]?.response?.url;
+    const imageUrl = data?.blogImage;
 
     return (
         <>
@@ -29,7 +29,7 @@ const BlogPreview = ({ data }) => {
                 className="blogPreviewWrapper"
                 style={{ display: "inline-block" }}
             >
-                <h1>{data?.title}</h1>
+                <h1>{data?.blobTitle}</h1>
                 <div className="blog-info">
                     <div>
                         <div className="author">

@@ -155,3 +155,32 @@ export const deleteDesignPage = ({params, id}) => {
         }
     );
 };
+
+export const getBlogList = () => {
+    return apiRequest(
+        {
+            url: `/api/admin/blog/list`,
+            type: "GET",
+        }
+    );
+};
+
+export const createBlog = (params) => {
+    return apiRequest(
+        {
+            url: `/api/admin/blog/create`,
+            type: "POST",
+            params
+        }
+    );
+};
+
+export const updateBlog = (params, id) => {
+    return apiRequest(
+        {
+            url: `/api/admin/blog/edit/${id}`,
+            type: "PUT",
+            params
+        }
+    );
+};
