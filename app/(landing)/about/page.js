@@ -12,7 +12,7 @@ export default function AboutRoute() {
           </p>
           
           {/* UXbodh Logo Text */}
-          <h1 className="mt-0 text-[80px] lg:text-[140px] font-extrabold tracking-tight leading-[0.85]">
+          <h1 className="mt-0 text-[80px] lg:text-[165px] font-semibold tracking-tight leading-[0.85]">
             <span className="text-black">UX</span>
             <span className="text-[#E94166]">bodh</span>
           </h1>

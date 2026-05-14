@@ -1,13 +1,25 @@
 import React from "react";
+import Image from "next/image";
 import GetStartToday from "./GetStartedToday";
 
-const RelaxHero = ({ bgClass = "bg-[#ffffff]" }) => {
+const RelaxHero = ({ bgClass = "bg-[#ffffff]", relaxImg }) => {
   return (
     <section
-      className={`w-full lg:w-[780px] mx-auto flex items-center justify-center py-16 px-4 ${bgClass}`}
+      className={`w-full lg:w-[780px] mx-auto py-20 px-4 mb-[160] ${bgClass} pt-[50px]`}
     >
-      <div className="max-w-2xl text-center">
-        <h2 className="text-2xl lg:text-3xl md:text-5xl font-bold md:leading-snug text-black">
+     {relaxImg && (
+      <div className="w-full flex w-full items-center justify-center">
+      <Image
+                    src="/images/relex.png"
+                    alt="Keyboard with hands"
+                     width={444}
+                      height={325}
+                     priority
+                />
+      </div>
+     )}
+      <div className="w-full w-full mt-10 mb-2 text-center items-center justify-center">
+        <h2 className="text-2xl lg:text-5xl md:text-10xl font-semibold leading70 text-black ">
           <span className="text-[#EA3B67]">Relax.</span>{" "}
           Your growth
           <br />

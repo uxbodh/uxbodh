@@ -15,7 +15,7 @@ export default function ContactRoute() {
         <>
             <PageShell>
                 <section className="bg-white">
-                    <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 lg:flex-row lg:gap-16">
+                    <div className="mx-auto flex w-full max-w-[1200px] max-w-7xl flex-col gap-12 lg:flex-row lg:gap-16">
                         <div className="flex-1 px-5">
                             <h1 className="text-[48px] md:text-[55px] font-semibold text-black">
                                 Lets Connect

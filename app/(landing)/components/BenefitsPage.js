@@ -79,8 +79,8 @@ const features = [
 
 export default function BenefitsPage() {
   return (
-    <section id="benefits" className="bg-white">
-      <div className="mx-auto w-full max-w-[780px] text-center">
+    <section id="benefits" className="bg-white pt-20">
+      <div className="mx-auto w-full max-w-[1000px] text-center">
         <Heading />
         <ImageBlock />
         <FeatureList />
@@ -92,12 +92,10 @@ export default function BenefitsPage() {
 
 function Heading() {
   return (
-    <div className="space-y-2 mb-20 px-5 lg:px-0">
-      <h2 className="font-semibold text-black text-center text-[36px] lg:text-[40px] leading-[38px]  sm:leading-[80px]">
-        We will make your online
-        <br />
-        presence{" "}
-        <span className="font-bold" style={{ color: "#e64169" }}>
+    <div className="space-y-2 mb-12 px-5 lg:px-0">
+      <h2 className="font-semibold text-black text-center text-[36px] lg:text-[65px] leading-[38px]  sm:leading-[80px]">
+        We will make your <br/>online presence{" "}
+        <span className="font-semibold" style={{ color: "#e64169" }}>
           STRONG
         </span>
       </h2>
@@ -130,10 +128,10 @@ function ImageBlock() {
 
 function FeatureList() {
   return (
-    <div className="w-full max-w-[660px] mx-auto mt-16 space-y-24 text-left mb-32 px-5 lg:px-0">
+    <div className="w-full max-w-[660px] mx-auto mt-16 space-y-2 text-left mb-32 px-5 lg:px-0">
       {features.map((feature) => (
         <div key={feature.title} className="">
-          <h3 className=" text-black text-4xl leading-[36px] sm:text-[40px] sm:leading-[58px] pb-7">
+          <h3 className=" text-black text-4xl leading-[36px] font-medium sm:text-[40px] sm:leading-[58px] pb-7">
             {feature.title}
           </h3>
 
@@ -144,7 +142,7 @@ function FeatureList() {
           {feature.bullets ? (
             <ul className="list-disc pl-5 py-8 text-black font-medium">
               {feature.bullets.map((item) => (
-                <li key={item} className="text-base leading-[28px]">
+                <li key={item} className="text-base leading-[35px]">
                   {item}
                 </li>
               ))}
@@ -152,7 +150,7 @@ function FeatureList() {
           ) : null}
 
           {feature.footer ? (
-            <p className="text-black font-medium text-base leading-[30px]">
+            <p className="text-black text-base leading-[30px]">
               {feature.footer}
             </p>
           ) : null}
@@ -163,5 +161,5 @@ function FeatureList() {
 }
 
 function BottomCta() {
-  return <RelaxHero bgClass="bg-[#f9f5f5]" />;
+  return <RelaxHero bgClass="bg-[#f9f5f5]" relaxImg={false} />;
 }

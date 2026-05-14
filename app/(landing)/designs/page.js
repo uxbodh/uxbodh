@@ -15,10 +15,10 @@ export default function DesignsRoute() {
 
       {/* Designs Grid Section */}
       <section className="relative overflow-hidden  text-white bg-[#020406]">
-        <div className="relative mx-auto w-full max-w-[1040px] px-6 pb-16 pt-12 sm:pb-20 sm:pt-16">
+        <div className="relative mx-auto w-full max-w-[1040px] px-6 pb-16 sm:pb-20">
           
 
-          <div className="mt-8 grid gap-10 md:grid-cols-2 sm:mt-10">
+          <div className="grid gap-10 md:grid-cols-2">
             {rest.map((item, index) => (
               <DesignCard key={item.id} item={item} topSpace={index % 2 === 1} />
             ))}
@@ -42,7 +42,7 @@ function DesignCard({ item, topSpace = false }) {
       {/* IMAGE WRAPPER */}
       <div
         className={`
-          relative w-full overflow-hidden bg-[#201E24]  p-3  rounded-[20px]
+          relative w-full overflow-hidden bg-[#201E24]  p-2  rounded-[20px]
           ${topSpace ? "mt-5 sm:mt-6" : ""}
         `}
       >

@@ -29,6 +29,7 @@ export default function FloatingInput({
             text-[15px]
             outline-none
             focus:border-gray-400
+            font-medium
           "
         />
 

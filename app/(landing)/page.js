@@ -8,7 +8,7 @@ import ProcessSection from "./components/ProcessSection";
 import TestimonialsSlider from "./components/TestimonialsSlider";
 import FAQAccordion from "./components/FAQAccordion";
 import BenefitsPage from "./components/BenefitsPage";
-// import SamplesSection from "./components/SamplesSlider";
+//import SamplesSection from "./components/SamplesSlider";
 import dynamic from "next/dynamic";
 import RelaxHero from "./components/RelaxHero";
 import CTAFormModal from "./components/CtaformButton";
@@ -26,6 +26,7 @@ export default function Home() {
             <ProcessSection />
             <TestimonialsSlider />
             <FAQAccordion />
+            <RelaxHero relaxImg={true} />
         </PageShell>
     );
 }
