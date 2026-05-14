@@ -8,10 +8,10 @@ import {
 } from "../../../api/apiRoutes";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
-const baseUrl =
-    typeof window !== "undefined"
-        ? window.location.origin
-        : "https://uxbodh.com";
+// const baseUrl =
+//     typeof window !== "undefined"
+//         ? window.location.origin
+//         : "https://uxbodh.com";
 
 const {
     Card,
@@ -34,7 +34,6 @@ const SampleImageList = () => {
     const [records, setRecords] = useState(null);
 
     const getFormData = (data) => {
-        console.log("data", data);
         setFormData(data);
         if (data?.success) {
             setIsModalOpen(false);
@@ -62,7 +61,6 @@ const SampleImageList = () => {
 
     const handleStatusChange = async (record) => {
         setLoading(true);
-        console.log("record", record);
         let response = await updateSampleImageStatus({
             id: record?._id,
             status: record?.status,
@@ -71,6 +69,8 @@ const SampleImageList = () => {
             if (response?.data?.success) {
                 messageApi.success(response?.data?.message);
                 fetchSampleImageData();
+            } else {
+                messageApi.error(response?.data?.message);
             }
         } catch (err) {
             messageApi.error(err.message);
@@ -85,6 +85,8 @@ const SampleImageList = () => {
             if (response?.data?.success) {
                 messageApi.success(response?.data?.message);
                 fetchSampleImageData();
+            } else {
+                messageApi.error(response?.data?.message);
             }
         } catch (err) {
             messageApi.error(err.message);
@@ -98,7 +100,7 @@ const SampleImageList = () => {
             dataIndex: "thumbnail",
             key: "thumbnail",
             render: (url) => (
-                <img src={baseUrl + url} alt="thumb" style={{ width: 80 }} />
+                <img src={url} alt="thumb" style={{ width: 80 }} />
             ),
             width: 120,
         },
@@ -107,7 +109,7 @@ const SampleImageList = () => {
             dataIndex: "image",
             key: "image",
             render: (url) => (
-                <img src={baseUrl + url} alt="thumb" style={{ width: 80 }} />
+                <img src={url} alt="thumb" style={{ width: 80 }} />
             ),
             width: 120,
         },

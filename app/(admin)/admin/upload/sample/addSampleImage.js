@@ -13,7 +13,10 @@ import {
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { useEffect, useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
-import { createSampleImageUpload, updateSampleImageUpload } from "../../../api/apiRoutes";
+import {
+    createSampleImageUpload,
+    updateSampleImageUpload,
+} from "../../../api/apiRoutes";
 
 const AddSampleImage = ({ getFormData, editRecord }) => {
     const [form] = Form.useForm();
@@ -23,7 +26,6 @@ const AddSampleImage = ({ getFormData, editRecord }) => {
     const [imageFileList, setImageFileList] = useState([]);
     const [messageApi, contextHolder] = message.useMessage();
 
-    console.log("editRecord", editRecord);
     const isEdit = !!editRecord?._id;
 
     const setFormDataFunction = (data) => {
@@ -31,7 +33,6 @@ const AddSampleImage = ({ getFormData, editRecord }) => {
     };
 
     const onFinish = async (values) => {
-        console.log("Form Values:", values);
         let payload = {
             thumbnail: values?.thumbnail,
             image: values?.image,
@@ -39,24 +40,27 @@ const AddSampleImage = ({ getFormData, editRecord }) => {
             content: values?.content,
             markerPostion: values?.markerPostion,
         };
-        console.log("payload", payload);
 
         let response = null;
 
         try {
-            
-                    if (editRecord) {
-                        response = await updateSampleImageUpload(payload, editRecord?._id);
-                    } else {
-                        response = await createSampleImageUpload(payload);
-                    }
-            
+            if (editRecord) {
+                response = await updateSampleImageUpload(
+                    payload,
+                    editRecord?._id,
+                );
+            } else {
+                response = await createSampleImageUpload(payload);
+            }
+
             if (response?.data?.success) {
                 setFormDataFunction(response?.data);
                 messageApi.success(response?.data?.message);
                 form.resetFields();
                 setThumbFileList([]);
                 setImageFileList([]);
+            } else {
+                messageApi.error(response?.data?.message);
             }
         } catch (error) {
             console.log(error);
@@ -143,7 +147,8 @@ const AddSampleImage = ({ getFormData, editRecord }) => {
                                 <Upload
                                     name="thumbnail"
                                     listType="picture-card"
-                                    action="/api/admin/upload/sample"
+                                    data={{ folder: "homepage-slider" }}
+                                    action="/api/admin/upload"
                                     fileList={thumbFileList}
                                     onChange={(info) => {
                                         setThumbFileList(info.fileList);
@@ -213,7 +218,8 @@ const AddSampleImage = ({ getFormData, editRecord }) => {
                                 <Upload
                                     name="image"
                                     listType="picture-card"
-                                    action="/api/admin/upload/sample"
+                                    data={{ folder: "homepage-slider" }}
+                                    action="/api/admin/upload"
                                     fileList={imageFileList}
                                     onChange={(info) => {
                                         setImageFileList(info.fileList);

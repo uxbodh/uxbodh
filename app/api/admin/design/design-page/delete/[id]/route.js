@@ -1,9 +1,8 @@
-// app/api/admin/sampleUpload/edit/[id]/route.js
 import { dbConnect } from "@/app/lib/dbConnect";
-import SampleUpload from "@/app/models/SampleUploads";
+import DesignPage from "@/app/models/DesignPage";
 import { NextResponse } from "next/server";
 
-export async function PATCH(req, { params }) {
+export async function DELETE(req, { params }) {
     try {
         await dbConnect();
 
@@ -12,32 +11,28 @@ export async function PATCH(req, { params }) {
         if (!id) {
             return NextResponse.json(
                 { success: false, message: "ID is required" },
-                { status: 400 },
+                { status: 400 }
             );
         }
 
-        const body = await req.json();
+        const deletedRecord = await DesignPage.findByIdAndDelete(id);
 
-        const updatedRecord = await SampleUpload.findByIdAndUpdate(id, body, {
-            new: true,
-        });
-
-        if (!updatedRecord) {
+        if (!deletedRecord) {
             return NextResponse.json(
                 { success: false, message: "Record not found" },
-                { status: 404 },
+                { status: 404 }
             );
         }
 
         return NextResponse.json({
             success: true,
-            message: "Sample updated successfully",
-            data: updatedRecord,
+            message: "Record deleted successfully",
+            data: deletedRecord,
         });
     } catch (err) {
         return NextResponse.json(
             { success: false, message: err.message },
-            { status: 500 },
+            { status: 500 }
         );
     }
 }

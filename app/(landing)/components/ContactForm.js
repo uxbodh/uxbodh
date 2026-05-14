@@ -31,7 +31,6 @@ const ContactForm = ({ getFormData }) => {
         setLoading(true);
         const res = await sendEnquiryForm(payload);
         if (res?.data?.data?.status === "success") {
-            console.log("res", res?.data?.data);
             setFormDataFunction(res?.data?.data);
             setFormDataMsg(res?.data?.data);
             setAlertMsg({
@@ -57,7 +56,6 @@ const ContactForm = ({ getFormData }) => {
     };
 
     const onSubmit = (data) => {
-        console.log("data", data);
         const payload = {
             fullname: data?.fullname,
             email: data?.email.toLowerCase(),
@@ -66,7 +64,6 @@ const ContactForm = ({ getFormData }) => {
             countryCode: data?.countryCode,
             interests: data?.interests,
         };
-        console.log("payload", payload);
         SendContactForm(payload);
     };
 

@@ -8,7 +8,6 @@ export default function ContactRoute() {
     const [formData, setFormData] = useState(null);
 
     const getFormData = (data) => {
-        console.log('data',data)
         setFormData(data);
     };
 
